@@ -137,3 +137,12 @@ and a test that every CFTC archive name is matched. Nothing else changes.
 Run 2 on the 32-market universe is the pre-registered primary result. Run 1 is
 kept and reported as it came out, as the commodity-only sub-universe (it
 coincides with S3 "dis").
+
+## Amendment 2 (2026-11-07 22:05 CET): correction of a timestamp
+
+Amendment 1 is headed "21:00 CET". That time is wrong: amendment 1 was
+committed at 20:58:26 CET (commit fd61875), after run 1 had written its
+outputs (20:57:15 CET). The order stated in amendment 1 (run 1, then the fix,
+then run 2) is right; only the clock time in its heading is wrong. All times
+in this file are local commit times recorded by the author's machine. They
+are self-reported and are not an external registration.
