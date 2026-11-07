@@ -93,11 +93,17 @@ def select_universe(x: pd.DataFrame, prices: dict[str, pd.Series], trading_days:
 
 # ── phases ──────────────────────────────────────────────────────────────────
 
-def phase_plane(x: pd.Series) -> pd.Series:
-    """theta = atan2(-d, z): 0 = maximal long, pi/2 = selling, pi = maximal short, 3pi/2 = buying."""
+def standardize(x):
+    """Trailing z-score of the position level and of its weekly change (Series or DataFrame)."""
     z = (x - x.rolling(Z_WIN, min_periods=Z_MIN).mean()) / x.rolling(Z_WIN, min_periods=Z_MIN).std()
     dx = x.diff()
     d = dx / dx.rolling(Z_WIN, min_periods=Z_MIN).std()
+    return z, d
+
+
+def phase_plane(x: pd.Series) -> pd.Series:
+    """theta = atan2(-d, z): 0 = maximal long, pi/2 = selling, pi = maximal short, 3pi/2 = buying."""
+    z, d = standardize(x)
     th = np.mod(np.arctan2(-d, z), 2 * np.pi)
     return th.where(z.notna() & d.notna())
 
