@@ -172,6 +172,19 @@ def circular_shift(th: pd.DataFrame, rng: np.random.Generator) -> pd.DataFrame:
     return out
 
 
+def ft_surrogate(X: np.ndarray, rng: np.random.Generator) -> np.ndarray:
+    """Multivariate Fourier-transform surrogate (Prichard and Theiler 1994): one random phase per
+    frequency, shared by all columns, keeps every power spectrum and every cross-spectrum (hence
+    the lag-0 cross-correlations) and randomizes everything else. X is (T, N) without NaN."""
+    n = X.shape[0]
+    F = np.fft.rfft(X, axis=0)
+    phi = rng.uniform(0, 2 * np.pi, F.shape[0])
+    phi[0] = 0.0
+    if n % 2 == 0:
+        phi[-1] = 0.0
+    return np.fft.irfft(F * np.exp(1j * phi)[:, None], n=n, axis=0)
+
+
 # ── point in time ───────────────────────────────────────────────────────────
 
 def entry_date(report: pd.Timestamp, trading_days: pd.DatetimeIndex) -> pd.Timestamp | None:

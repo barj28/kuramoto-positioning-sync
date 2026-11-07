@@ -72,6 +72,18 @@ def test_circular_shift_keeps_each_series_and_breaks_alignment():
     assert cs.order_parameter(shifted).mean() < 0.5
 
 
+def test_multivariate_ft_surrogate_keeps_spectra_and_cross_correlation():
+    rng = np.random.default_rng(4)
+    n = 1024
+    common = rng.standard_normal(n)
+    X = np.column_stack([common + 0.5 * rng.standard_normal(n), common + 0.5 * rng.standard_normal(n),
+                         rng.standard_normal(n)])
+    S = cs.ft_surrogate(X, rng)
+    np.testing.assert_allclose(np.abs(np.fft.rfft(S, axis=0)), np.abs(np.fft.rfft(X, axis=0)), rtol=1e-8, atol=1e-8)
+    np.testing.assert_allclose(np.corrcoef(S.T), np.corrcoef(X.T), atol=1e-8)
+    assert abs(np.corrcoef(S[:, 0], X[:, 0])[0, 1]) < 0.2      # a new realization, not a copy
+
+
 def test_entry_date_is_monday_after_release():
     report = pd.Timestamp("2020-03-10")              # Tuesday
     days = pd.bdate_range("2020-03-09", "2020-03-31")
