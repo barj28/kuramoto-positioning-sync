@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from research.kuramoto_cot import cotsync as cs
+from . import cotsync as cs
 
 
 def _weekly_index(n):

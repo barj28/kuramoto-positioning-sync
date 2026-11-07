@@ -1,7 +1,7 @@
 """Tests of the pre-registered inference."""
 import numpy as np
 
-from research.kuramoto_cot import stats as st
+from . import stats as st
 
 
 def test_stationary_bootstrap_is_blocky_and_in_range():

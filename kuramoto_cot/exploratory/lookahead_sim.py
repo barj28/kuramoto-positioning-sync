@@ -5,7 +5,7 @@ universe of trend strategies (TSMOM and MA crossovers) as in the paper, then the
 statistic: Spearman of r(t) with the 21-day forward maximum drawdown of the equal-weight
 strategy portfolio, for the original SFB and for the causal SFB. Any correlation is spurious.
 
-python -m research.kuramoto_cot.exploratory.lookahead_sim --reps 100 --out <json>
+python -m kuramoto_cot.exploratory.lookahead_sim --reps 100 --out <json>
 """
 from __future__ import annotations
 
@@ -17,8 +17,8 @@ import numpy as np
 import pandas as pd
 from scipy import stats as sps
 
-from research.kuramoto_cot import cotsync as cs
-from research.kuramoto_cot.exploratory.original_sfb import compute_kuramoto_sync
+from .. import cotsync as cs
+from .original_sfb import compute_kuramoto_sync
 
 M, T, FWD = 20, 3000, 21
 TSMOM = (20, 60, 120, 250)

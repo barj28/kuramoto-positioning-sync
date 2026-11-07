@@ -1,4 +1,4 @@
-"""Figures of the note. python -m research.kuramoto_cot.figures --cftc <dir> --out <dir>"""
+"""Figures of the note. python -m kuramoto_cot.figures --cftc <dir> --out <dir>"""
 from __future__ import annotations
 
 import argparse
@@ -10,8 +10,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from research.kuramoto_cot import cotsync as cs
-from research.kuramoto_cot.exploratory.original_sfb import compute_kuramoto_sync
+from . import cotsync as cs
+from .exploratory.original_sfb import compute_kuramoto_sync
 
 HERE = Path(__file__).parent
 plt.rcParams.update({"font.family": "serif", "font.size": 9, "axes.spines.top": False, "axes.spines.right": False})

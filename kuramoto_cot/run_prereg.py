@@ -1,6 +1,6 @@
 """Run H1, H2, H3 exactly as frozen in PREREG.md (commit 676c300).
 
-python -m research.kuramoto_cot.run_prereg --cftc <unzipped CFTC dir> --prices <data/futures> --out <dir>
+python -m kuramoto_cot.run_prereg --cftc <unzipped CFTC dir> --prices <data/futures> --out <dir>
 """
 from __future__ import annotations
 
@@ -11,8 +11,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from research.kuramoto_cot import cotsync as cs
-from research.kuramoto_cot import stats as st
+from . import cotsync as cs
+from . import stats as st
 
 H = 20
 H1_SPAN = ("2009-06-01", "2026-11-03")
