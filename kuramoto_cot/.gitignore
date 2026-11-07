@@ -1,0 +1,7 @@
+note/*.aux
+note/*.log
+note/*.fls
+note/*.fdb_latexmk
+note/*.out
+note/build.log
+__pycache__/

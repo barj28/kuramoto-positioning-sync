@@ -1,0 +1,26 @@
+{
+  "original": {
+    "mean_rho": -0.00043012001631196755,
+    "sd_rho": 0.0696428581617999,
+    "share_p_lt_05": 0.64,
+    "share_p_lt_1e6": 0.175,
+    "min_rho": -0.17623220431885536,
+    "max_rho": 0.19340640901251252
+  },
+  "causal": {
+    "mean_rho": -0.008377105537253134,
+    "sd_rho": 0.07155333733921815,
+    "share_p_lt_05": 0.59,
+    "share_p_lt_1e6": 0.225,
+    "min_rho": -0.16884513204405702,
+    "max_rho": 0.17775524729824738
+  },
+  "reps": 200,
+  "design": {
+    "markets": 20,
+    "days": 3000,
+    "strategies": 120,
+    "fwd_days": 21,
+    "returns": "iid zero-mean, log-AR(1) stochastic vol, no predictability"
+  }
+}

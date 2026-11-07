@@ -1,0 +1,788 @@
+{
+  "description": "Bid-ask contamination sensitivity test for tick-level beta estimates. Tests whether the liquidity elasticity beta is sensitive to bid-ask bounce in the first intraday return, using three alternative estimators.",
+  "data": {
+    "daily_panel": "D:\\data_barj\\data\\L4\\databento_tick\\daily_panel.parquet",
+    "beta": "D:\\data_barj\\data\\L4\\databento_tick\\beta.parquet",
+    "n_instruments": 43,
+    "date_range": [
+      "2025-02-24",
+      "2026-02-23"
+    ]
+  },
+  "methods": {
+    "A_lagged_sigma": {
+      "description": "Regress log(V_t) on log(sigma_{t-1}). Breaks contemporaneous contamination by using yesterday's sigma.",
+      "method": "Lagged sigma (t-1)",
+      "n_instruments": 43,
+      "pearson_r": 0.729551,
+      "pearson_p": 2.8625581864283048e-08,
+      "spearman_r": 0.244941,
+      "spearman_p": 0.11340353289902208,
+      "mean_abs_diff": 0.304535,
+      "median_abs_diff": 0.191724,
+      "max_abs_diff": 0.926259,
+      "n_sign_changes": 24,
+      "n_regime_changes": 21,
+      "regime_change_pct": 48.8
+    },
+    "B_rolling_median": {
+      "description": "Replace sigma_t with 5-day trailing rolling median. Robust to single-day bid-ask bounce outliers.",
+      "method": "5-day rolling median sigma",
+      "n_instruments": 43,
+      "pearson_r": 0.400546,
+      "pearson_p": 0.007776669339791732,
+      "spearman_r": 0.048777,
+      "spearman_p": 0.7560965421470468,
+      "mean_abs_diff": 0.71571,
+      "median_abs_diff": 0.553037,
+      "max_abs_diff": 2.184127,
+      "n_sign_changes": 24,
+      "n_regime_changes": 29,
+      "regime_change_pct": 67.4
+    },
+    "C_jackknife": {
+      "description": "Leave-one-out jackknife mean beta. Measures influence of individual days on the full-sample estimate.",
+      "method": "Jackknife mean",
+      "n_instruments": 43,
+      "pearson_r": 1.0,
+      "pearson_p": 8.08255156404774e-191,
+      "spearman_r": 1.0,
+      "spearman_p": 0.0,
+      "mean_abs_diff": 8e-06,
+      "median_abs_diff": 2e-06,
+      "max_abs_diff": 9.3e-05,
+      "n_sign_changes": 0,
+      "n_regime_changes": 0,
+      "regime_change_pct": 0.0
+    }
+  },
+  "regime_changes": {
+    "instruments_with_any_regime_change": [
+      "6A",
+      "6B",
+      "6C",
+      "6E",
+      "6J",
+      "6S",
+      "BTC",
+      "BZ",
+      "ETH",
+      "GC",
+      "HG",
+      "HO",
+      "LE",
+      "NG",
+      "NQ",
+      "PL",
+      "RB",
+      "RTY",
+      "SI",
+      "SOL",
+      "TN",
+      "UB",
+      "XRP",
+      "YM",
+      "ZB",
+      "ZF",
+      "ZL",
+      "ZM",
+      "ZN",
+      "ZS",
+      "ZT"
+    ],
+    "n_total": 31
+  },
+  "jackknife_sensitivity": {
+    "6A": {
+      "full_beta": -0.194433,
+      "jackknife_mean": -0.194432,
+      "jackknife_se": 0.052698,
+      "se_over_beta": 0.271
+    },
+    "6B": {
+      "full_beta": -0.422461,
+      "jackknife_mean": -0.422462,
+      "jackknife_se": 0.040517,
+      "se_over_beta": 0.0959
+    },
+    "6C": {
+      "full_beta": -0.284317,
+      "jackknife_mean": -0.284315,
+      "jackknife_se": 0.051197,
+      "se_over_beta": 0.1801
+    },
+    "6E": {
+      "full_beta": -0.101573,
+      "jackknife_mean": -0.10157,
+      "jackknife_se": 0.045918,
+      "se_over_beta": 0.4521
+    },
+    "6J": {
+      "full_beta": -0.211567,
+      "jackknife_mean": -0.211566,
+      "jackknife_se": 0.055211,
+      "se_over_beta": 0.261
+    },
+    "6M": {
+      "full_beta": -0.002628,
+      "jackknife_mean": -0.002628,
+      "jackknife_se": 0.002662,
+      "se_over_beta": 1.0129
+    },
+    "6N": {
+      "full_beta": -0.010855,
+      "jackknife_mean": -0.010855,
+      "jackknife_se": 0.008423,
+      "se_over_beta": 0.776
+    },
+    "6S": {
+      "full_beta": -0.127819,
+      "jackknife_mean": -0.127818,
+      "jackknife_se": 0.029696,
+      "se_over_beta": 0.2323
+    },
+    "BTC": {
+      "full_beta": 0.055067,
+      "jackknife_mean": 0.055067,
+      "jackknife_se": 0.023446,
+      "se_over_beta": 0.4258
+    },
+    "BZ": {
+      "full_beta": -0.317244,
+      "jackknife_mean": -0.317247,
+      "jackknife_se": 0.032516,
+      "se_over_beta": 0.1025
+    },
+    "CL": {
+      "full_beta": -0.016811,
+      "jackknife_mean": -0.016812,
+      "jackknife_se": 0.008786,
+      "se_over_beta": 0.5227
+    },
+    "ES": {
+      "full_beta": 0.000867,
+      "jackknife_mean": 0.000867,
+      "jackknife_se": 0.002498,
+      "se_over_beta": 2.8799
+    },
+    "ETH": {
+      "full_beta": -0.037466,
+      "jackknife_mean": -0.037466,
+      "jackknife_se": 0.026395,
+      "se_over_beta": 0.7045
+    },
+    "GC": {
+      "full_beta": 0.132752,
+      "jackknife_mean": 0.132751,
+      "jackknife_se": 0.053915,
+      "se_over_beta": 0.4061
+    },
+    "GF": {
+      "full_beta": 0.418267,
+      "jackknife_mean": 0.418321,
+      "jackknife_se": 0.12339,
+      "se_over_beta": 0.295
+    },
+    "HE": {
+      "full_beta": 0.381681,
+      "jackknife_mean": 0.381676,
+      "jackknife_se": 0.058131,
+      "se_over_beta": 0.1523
+    },
+    "HG": {
+      "full_beta": 0.001734,
+      "jackknife_mean": 0.001732,
+      "jackknife_se": 0.034391,
+      "se_over_beta": 19.8351
+    },
+    "HO": {
+      "full_beta": -0.411727,
+      "jackknife_mean": -0.411722,
+      "jackknife_se": 0.046371,
+      "se_over_beta": 0.1126
+    },
+    "KE": {
+      "full_beta": 1.228815,
+      "jackknife_mean": 1.228849,
+      "jackknife_se": 0.142294,
+      "se_over_beta": 0.1158
+    },
+    "LE": {
+      "full_beta": 0.331291,
+      "jackknife_mean": 0.331289,
+      "jackknife_se": 0.055206,
+      "se_over_beta": 0.1666
+    },
+    "NG": {
+      "full_beta": -0.114277,
+      "jackknife_mean": -0.114278,
+      "jackknife_se": 0.027484,
+      "se_over_beta": 0.2405
+    },
+    "NQ": {
+      "full_beta": -0.096342,
+      "jackknife_mean": -0.096343,
+      "jackknife_se": 0.036626,
+      "se_over_beta": 0.3802
+    },
+    "PL": {
+      "full_beta": 0.34347,
+      "jackknife_mean": 0.343472,
+      "jackknife_se": 0.062179,
+      "se_over_beta": 0.181
+    },
+    "RB": {
+      "full_beta": -0.343781,
+      "jackknife_mean": -0.343785,
+      "jackknife_se": 0.041738,
+      "se_over_beta": 0.1214
+    },
+    "RTY": {
+      "full_beta": -0.243662,
+      "jackknife_mean": -0.243664,
+      "jackknife_se": 0.028735,
+      "se_over_beta": 0.1179
+    },
+    "SI": {
+      "full_beta": 0.382578,
+      "jackknife_mean": 0.382578,
+      "jackknife_se": 0.052632,
+      "se_over_beta": 0.1376
+    },
+    "SOL": {
+      "full_beta": -0.158018,
+      "jackknife_mean": -0.158018,
+      "jackknife_se": 0.031932,
+      "se_over_beta": 0.2021
+    },
+    "SR1": {
+      "full_beta": 0.049634,
+      "jackknife_mean": 0.049636,
+      "jackknife_se": 0.015098,
+      "se_over_beta": 0.3042
+    },
+    "SR3": {
+      "full_beta": -0.00738,
+      "jackknife_mean": -0.007379,
+      "jackknife_se": 0.008868,
+      "se_over_beta": 1.2016
+    },
+    "TN": {
+      "full_beta": -0.530879,
+      "jackknife_mean": -0.53088,
+      "jackknife_se": 0.066775,
+      "se_over_beta": 0.1258
+    },
+    "UB": {
+      "full_beta": -0.545965,
+      "jackknife_mean": -0.545967,
+      "jackknife_se": 0.065979,
+      "se_over_beta": 0.1208
+    },
+    "XRP": {
+      "full_beta": -0.059,
+      "jackknife_mean": -0.059003,
+      "jackknife_se": 0.035485,
+      "se_over_beta": 0.6014
+    },
+    "YM": {
+      "full_beta": -0.100806,
+      "jackknife_mean": -0.100806,
+      "jackknife_se": 0.037304,
+      "se_over_beta": 0.3701
+    },
+    "ZB": {
+      "full_beta": -0.556089,
+      "jackknife_mean": -0.556091,
+      "jackknife_se": 0.061791,
+      "se_over_beta": 0.1111
+    },
+    "ZC": {
+      "full_beta": 1.490098,
+      "jackknife_mean": 1.490191,
+      "jackknife_se": 0.250527,
+      "se_over_beta": 0.1681
+    },
+    "ZF": {
+      "full_beta": -0.424346,
+      "jackknife_mean": -0.424348,
+      "jackknife_se": 0.069936,
+      "se_over_beta": 0.1648
+    },
+    "ZL": {
+      "full_beta": 0.809114,
+      "jackknife_mean": 0.809123,
+      "jackknife_se": 0.061105,
+      "se_over_beta": 0.0755
+    },
+    "ZM": {
+      "full_beta": 0.885232,
+      "jackknife_mean": 0.885257,
+      "jackknife_se": 0.101939,
+      "se_over_beta": 0.1152
+    },
+    "ZN": {
+      "full_beta": -0.469743,
+      "jackknife_mean": -0.469745,
+      "jackknife_se": 0.063481,
+      "se_over_beta": 0.1351
+    },
+    "ZQ": {
+      "full_beta": 0.015743,
+      "jackknife_mean": 0.015742,
+      "jackknife_se": 0.009656,
+      "se_over_beta": 0.6134
+    },
+    "ZS": {
+      "full_beta": 0.743656,
+      "jackknife_mean": 0.74367,
+      "jackknife_se": 0.100328,
+      "se_over_beta": 0.1349
+    },
+    "ZT": {
+      "full_beta": -0.399213,
+      "jackknife_mean": -0.399216,
+      "jackknife_se": 0.094211,
+      "se_over_beta": 0.236
+    },
+    "ZW": {
+      "full_beta": 1.321231,
+      "jackknife_mean": 1.321272,
+      "jackknife_se": 0.16757,
+      "se_over_beta": 0.1268
+    }
+  },
+  "per_instrument_detail": {
+    "6A": {
+      "original_beta": -0.194433,
+      "original_regime": "counter-cyclical",
+      "lagged_beta": 0.286129,
+      "rolling_median_beta": 1.040622,
+      "jackknife_mean_beta": -0.194432,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "destabilizing",
+      "jackknife_regime": "counter-cyclical"
+    },
+    "6B": {
+      "original_beta": -0.422461,
+      "original_regime": "counter-cyclical",
+      "lagged_beta": 0.160162,
+      "rolling_median_beta": 0.657512,
+      "jackknife_mean_beta": -0.422462,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "withdrawing",
+      "jackknife_regime": "counter-cyclical"
+    },
+    "6C": {
+      "original_beta": -0.284317,
+      "original_regime": "counter-cyclical",
+      "lagged_beta": 0.322938,
+      "rolling_median_beta": 1.198318,
+      "jackknife_mean_beta": -0.284315,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "destabilizing",
+      "jackknife_regime": "counter-cyclical"
+    },
+    "6E": {
+      "original_beta": -0.101573,
+      "original_regime": "inelastic",
+      "lagged_beta": 0.358118,
+      "rolling_median_beta": 1.297935,
+      "jackknife_mean_beta": -0.10157,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "destabilizing",
+      "jackknife_regime": "inelastic"
+    },
+    "6J": {
+      "original_beta": -0.211567,
+      "original_regime": "counter-cyclical",
+      "lagged_beta": 0.334241,
+      "rolling_median_beta": 1.09626,
+      "jackknife_mean_beta": -0.211566,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "destabilizing",
+      "jackknife_regime": "counter-cyclical"
+    },
+    "6M": {
+      "original_beta": -0.002628,
+      "original_regime": "inelastic",
+      "lagged_beta": 0.003638,
+      "rolling_median_beta": 0.022761,
+      "jackknife_mean_beta": -0.002628,
+      "lagged_regime": "inelastic",
+      "rolling_median_regime": "inelastic",
+      "jackknife_regime": "inelastic"
+    },
+    "6N": {
+      "original_beta": -0.010855,
+      "original_regime": "inelastic",
+      "lagged_beta": 0.00183,
+      "rolling_median_beta": 0.015581,
+      "jackknife_mean_beta": -0.010855,
+      "lagged_regime": "inelastic",
+      "rolling_median_regime": "inelastic",
+      "jackknife_regime": "inelastic"
+    },
+    "6S": {
+      "original_beta": -0.127819,
+      "original_regime": "inelastic",
+      "lagged_beta": 0.163114,
+      "rolling_median_beta": 0.518694,
+      "jackknife_mean_beta": -0.127818,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "withdrawing",
+      "jackknife_regime": "inelastic"
+    },
+    "BTC": {
+      "original_beta": 0.055067,
+      "original_regime": "inelastic",
+      "lagged_beta": 0.126082,
+      "rolling_median_beta": 0.446335,
+      "jackknife_mean_beta": 0.055067,
+      "lagged_regime": "inelastic",
+      "rolling_median_regime": "withdrawing",
+      "jackknife_regime": "inelastic"
+    },
+    "BZ": {
+      "original_beta": -0.317244,
+      "original_regime": "counter-cyclical",
+      "lagged_beta": 0.12327,
+      "rolling_median_beta": 0.145055,
+      "jackknife_mean_beta": -0.317247,
+      "lagged_regime": "inelastic",
+      "rolling_median_regime": "inelastic",
+      "jackknife_regime": "counter-cyclical"
+    },
+    "CL": {
+      "original_beta": -0.016811,
+      "original_regime": "inelastic",
+      "lagged_beta": 0.02609,
+      "rolling_median_beta": 0.043127,
+      "jackknife_mean_beta": -0.016812,
+      "lagged_regime": "inelastic",
+      "rolling_median_regime": "inelastic",
+      "jackknife_regime": "inelastic"
+    },
+    "ES": {
+      "original_beta": 0.000867,
+      "original_regime": "inelastic",
+      "lagged_beta": 0.014715,
+      "rolling_median_beta": 0.028275,
+      "jackknife_mean_beta": 0.000867,
+      "lagged_regime": "inelastic",
+      "rolling_median_regime": "inelastic",
+      "jackknife_regime": "inelastic"
+    },
+    "ETH": {
+      "original_beta": -0.037466,
+      "original_regime": "inelastic",
+      "lagged_beta": 0.02975,
+      "rolling_median_beta": 0.152023,
+      "jackknife_mean_beta": -0.037466,
+      "lagged_regime": "inelastic",
+      "rolling_median_regime": "withdrawing",
+      "jackknife_regime": "inelastic"
+    },
+    "GC": {
+      "original_beta": 0.132752,
+      "original_regime": "inelastic",
+      "lagged_beta": 0.370519,
+      "rolling_median_beta": 0.946488,
+      "jackknife_mean_beta": 0.132751,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "withdrawing",
+      "jackknife_regime": "inelastic"
+    },
+    "GF": {
+      "original_beta": 0.418267,
+      "original_regime": "withdrawing",
+      "lagged_beta": 0.2673,
+      "rolling_median_beta": 0.663544,
+      "jackknife_mean_beta": 0.418321,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "withdrawing",
+      "jackknife_regime": "withdrawing"
+    },
+    "HE": {
+      "original_beta": 0.381681,
+      "original_regime": "withdrawing",
+      "lagged_beta": 0.345013,
+      "rolling_median_beta": 0.583368,
+      "jackknife_mean_beta": 0.381676,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "withdrawing",
+      "jackknife_regime": "withdrawing"
+    },
+    "HG": {
+      "original_beta": 0.001734,
+      "original_regime": "inelastic",
+      "lagged_beta": 0.138311,
+      "rolling_median_beta": 0.486399,
+      "jackknife_mean_beta": 0.001732,
+      "lagged_regime": "inelastic",
+      "rolling_median_regime": "withdrawing",
+      "jackknife_regime": "inelastic"
+    },
+    "HO": {
+      "original_beta": -0.411727,
+      "original_regime": "counter-cyclical",
+      "lagged_beta": 0.166516,
+      "rolling_median_beta": 0.556062,
+      "jackknife_mean_beta": -0.411722,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "withdrawing",
+      "jackknife_regime": "counter-cyclical"
+    },
+    "KE": {
+      "original_beta": 1.228815,
+      "original_regime": "destabilizing",
+      "lagged_beta": 1.119984,
+      "rolling_median_beta": 1.784051,
+      "jackknife_mean_beta": 1.228849,
+      "lagged_regime": "destabilizing",
+      "rolling_median_regime": "destabilizing",
+      "jackknife_regime": "destabilizing"
+    },
+    "LE": {
+      "original_beta": 0.331291,
+      "original_regime": "withdrawing",
+      "lagged_beta": 0.141346,
+      "rolling_median_beta": 0.413968,
+      "jackknife_mean_beta": 0.331289,
+      "lagged_regime": "inelastic",
+      "rolling_median_regime": "withdrawing",
+      "jackknife_regime": "withdrawing"
+    },
+    "NG": {
+      "original_beta": -0.114277,
+      "original_regime": "inelastic",
+      "lagged_beta": 0.077447,
+      "rolling_median_beta": 0.17777,
+      "jackknife_mean_beta": -0.114278,
+      "lagged_regime": "inelastic",
+      "rolling_median_regime": "withdrawing",
+      "jackknife_regime": "inelastic"
+    },
+    "NQ": {
+      "original_beta": -0.096342,
+      "original_regime": "inelastic",
+      "lagged_beta": 0.187313,
+      "rolling_median_beta": 0.392106,
+      "jackknife_mean_beta": -0.096343,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "withdrawing",
+      "jackknife_regime": "inelastic"
+    },
+    "PL": {
+      "original_beta": 0.34347,
+      "original_regime": "withdrawing",
+      "lagged_beta": 0.531025,
+      "rolling_median_beta": 1.467747,
+      "jackknife_mean_beta": 0.343472,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "destabilizing",
+      "jackknife_regime": "withdrawing"
+    },
+    "RB": {
+      "original_beta": -0.343781,
+      "original_regime": "counter-cyclical",
+      "lagged_beta": 0.175445,
+      "rolling_median_beta": 0.500821,
+      "jackknife_mean_beta": -0.343785,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "withdrawing",
+      "jackknife_regime": "counter-cyclical"
+    },
+    "RTY": {
+      "original_beta": -0.243662,
+      "original_regime": "counter-cyclical",
+      "lagged_beta": 0.106535,
+      "rolling_median_beta": 0.244713,
+      "jackknife_mean_beta": -0.243664,
+      "lagged_regime": "inelastic",
+      "rolling_median_regime": "withdrawing",
+      "jackknife_regime": "counter-cyclical"
+    },
+    "SI": {
+      "original_beta": 0.382578,
+      "original_regime": "withdrawing",
+      "lagged_beta": 0.464362,
+      "rolling_median_beta": 1.161437,
+      "jackknife_mean_beta": 0.382578,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "destabilizing",
+      "jackknife_regime": "withdrawing"
+    },
+    "SOL": {
+      "original_beta": -0.158018,
+      "original_regime": "counter-cyclical",
+      "lagged_beta": -0.06424,
+      "rolling_median_beta": -0.336122,
+      "jackknife_mean_beta": -0.158018,
+      "lagged_regime": "inelastic",
+      "rolling_median_regime": "counter-cyclical",
+      "jackknife_regime": "counter-cyclical"
+    },
+    "SR1": {
+      "original_beta": 0.049634,
+      "original_regime": "inelastic",
+      "lagged_beta": 0.022057,
+      "rolling_median_beta": 0.107611,
+      "jackknife_mean_beta": 0.049636,
+      "lagged_regime": "inelastic",
+      "rolling_median_regime": "inelastic",
+      "jackknife_regime": "inelastic"
+    },
+    "SR3": {
+      "original_beta": -0.00738,
+      "original_regime": "inelastic",
+      "lagged_beta": 0.003759,
+      "rolling_median_beta": 0.005938,
+      "jackknife_mean_beta": -0.007379,
+      "lagged_regime": "inelastic",
+      "rolling_median_regime": "inelastic",
+      "jackknife_regime": "inelastic"
+    },
+    "TN": {
+      "original_beta": -0.530879,
+      "original_regime": "counter-cyclical",
+      "lagged_beta": 0.341159,
+      "rolling_median_beta": 1.29324,
+      "jackknife_mean_beta": -0.53088,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "destabilizing",
+      "jackknife_regime": "counter-cyclical"
+    },
+    "UB": {
+      "original_beta": -0.545965,
+      "original_regime": "counter-cyclical",
+      "lagged_beta": 0.311382,
+      "rolling_median_beta": 1.203094,
+      "jackknife_mean_beta": -0.545967,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "destabilizing",
+      "jackknife_regime": "counter-cyclical"
+    },
+    "XRP": {
+      "original_beta": -0.059,
+      "original_regime": "inelastic",
+      "lagged_beta": -0.050077,
+      "rolling_median_beta": -0.185535,
+      "jackknife_mean_beta": -0.059003,
+      "lagged_regime": "inelastic",
+      "rolling_median_regime": "counter-cyclical",
+      "jackknife_regime": "inelastic"
+    },
+    "YM": {
+      "original_beta": -0.100806,
+      "original_regime": "inelastic",
+      "lagged_beta": 0.212288,
+      "rolling_median_beta": 0.545725,
+      "jackknife_mean_beta": -0.100806,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "withdrawing",
+      "jackknife_regime": "inelastic"
+    },
+    "ZB": {
+      "original_beta": -0.556089,
+      "original_regime": "counter-cyclical",
+      "lagged_beta": 0.303901,
+      "rolling_median_beta": 1.306665,
+      "jackknife_mean_beta": -0.556091,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "destabilizing",
+      "jackknife_regime": "counter-cyclical"
+    },
+    "ZC": {
+      "original_beta": 1.490098,
+      "original_regime": "destabilizing",
+      "lagged_beta": 1.303583,
+      "rolling_median_beta": 2.284674,
+      "jackknife_mean_beta": 1.490191,
+      "lagged_regime": "destabilizing",
+      "rolling_median_regime": "destabilizing",
+      "jackknife_regime": "destabilizing"
+    },
+    "ZF": {
+      "original_beta": -0.424346,
+      "original_regime": "counter-cyclical",
+      "lagged_beta": 0.377009,
+      "rolling_median_beta": 1.344614,
+      "jackknife_mean_beta": -0.424348,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "destabilizing",
+      "jackknife_regime": "counter-cyclical"
+    },
+    "ZL": {
+      "original_beta": 0.809114,
+      "original_regime": "withdrawing",
+      "lagged_beta": 0.733199,
+      "rolling_median_beta": 1.064496,
+      "jackknife_mean_beta": 0.809123,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "destabilizing",
+      "jackknife_regime": "withdrawing"
+    },
+    "ZM": {
+      "original_beta": 0.885232,
+      "original_regime": "withdrawing",
+      "lagged_beta": 0.653483,
+      "rolling_median_beta": 1.43827,
+      "jackknife_mean_beta": 0.885257,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "destabilizing",
+      "jackknife_regime": "withdrawing"
+    },
+    "ZN": {
+      "original_beta": -0.469743,
+      "original_regime": "counter-cyclical",
+      "lagged_beta": 0.317076,
+      "rolling_median_beta": 1.386755,
+      "jackknife_mean_beta": -0.469745,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "destabilizing",
+      "jackknife_regime": "counter-cyclical"
+    },
+    "ZQ": {
+      "original_beta": 0.015743,
+      "original_regime": "inelastic",
+      "lagged_beta": 0.008259,
+      "rolling_median_beta": 0.001526,
+      "jackknife_mean_beta": 0.015742,
+      "lagged_regime": "inelastic",
+      "rolling_median_regime": "inelastic",
+      "jackknife_regime": "inelastic"
+    },
+    "ZS": {
+      "original_beta": 0.743656,
+      "original_regime": "withdrawing",
+      "lagged_beta": 0.44572,
+      "rolling_median_beta": 1.292531,
+      "jackknife_mean_beta": 0.74367,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "destabilizing",
+      "jackknife_regime": "withdrawing"
+    },
+    "ZT": {
+      "original_beta": -0.399213,
+      "original_regime": "counter-cyclical",
+      "lagged_beta": 0.527046,
+      "rolling_median_beta": 1.784914,
+      "jackknife_mean_beta": -0.399216,
+      "lagged_regime": "withdrawing",
+      "rolling_median_regime": "destabilizing",
+      "jackknife_regime": "counter-cyclical"
+    },
+    "ZW": {
+      "original_beta": 1.321231,
+      "original_regime": "destabilizing",
+      "lagged_beta": 1.25859,
+      "rolling_median_beta": 1.961291,
+      "jackknife_mean_beta": 1.321272,
+      "lagged_regime": "destabilizing",
+      "rolling_median_regime": "destabilizing",
+      "jackknife_regime": "destabilizing"
+    }
+  },
+  "verdict": "SENSITIVE: Beta estimates show substantial dependence on the specific volatility measure. Results should be interpreted with caution."
+}

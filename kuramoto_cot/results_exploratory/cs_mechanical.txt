@@ -1,0 +1,5 @@
+true spread  0.0 bps (true beta=0): beta_CS=+0.87  R2=0.247  share S>0 kept=0.59
+true spread  2.0 bps (true beta=0): beta_CS=+0.81  R2=0.164  share S>0 kept=0.58
+true spread 10.0 bps (true beta=0): beta_CS=+0.71  R2=0.156  share S>0 kept=0.60
+noise floor N=53: E[r]=0.1228  sqrt(pi/(4N))=0.1217  1/sqrt(N)=0.1374
+noise floor N=4786: E[r]=0.0129  sqrt(pi/(4N))=0.0128  1/sqrt(N)=0.0145
