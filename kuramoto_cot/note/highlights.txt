@@ -1,0 +1,5 @@
+Pre-registered Kuramoto test on CFTC speculative positions in 32 futures markets
+Pooled synchronization predicts no returns, drawdowns or volatility of the book
+Most measured phase-locking is ordinary comovement of positions
+Synchronized currency positioning precedes deeper leveraged-fund drawdowns
+Held-out tests of the currency and commodity effects are registered

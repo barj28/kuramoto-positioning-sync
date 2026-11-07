@@ -1,353 +1,330 @@
-\documentclass[11pt]{article}
-\usepackage[utf8]{inputenc}
+\documentclass[preprint,12pt,authoryear]{elsarticle}
 \usepackage[T1]{fontenc}
-\usepackage{mathpazo}
-\usepackage{microtype}
-\usepackage[margin=1in]{geometry}
-\usepackage{setspace}
-\onehalfspacing
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \graphicspath{{figures/}}
 \usepackage{booktabs}
-\usepackage[round]{natbib}
 \usepackage[colorlinks,citecolor=black,linkcolor=black,urlcolor=blue]{hyperref}
-
-\title{\textbf{Phase-Locking Without Prediction}\\[0.3em]
-\large A Pre-Registered Test of Kuramoto Crowding on Real Speculative Positions}
-\author{Arjun Kathiravelu\thanks{Independent researcher, Geneva.
-\texttt{arjunkathiravelupro@gmail.com}. Code, data pointers, the frozen
-pre-registration and every result file are in the replication package. An AI
-coding assistant was used to write and test code and to draft text; the author
-checked every number against the result files and is responsible for the content.}}
-\date{November 2026}
+\journal{Finance Research Letters}
 
 \begin{document}
-\maketitle
+\begin{frontmatter}
+
+\title{Synchronized speculative positioning in futures markets:\\
+a pre-registered null and exploratory sub-market effects}
+
+\author{Arjun Kathiravelu}
+\ead{arjunkathiravelupro@gmail.com}
+\address{Independent researcher, Geneva, Switzerland}
 
 \begin{abstract}
-\noindent
-Coupled-oscillator (Kuramoto) models are increasingly proposed as crowding
-indicators: when trading strategies phase-lock, synchronized exits should
-precede drawdowns. We document three implementation flaws that invalidate such
-evidence. Event-anchored phase extraction that interpolates between flow peaks
-uses the next peak and hence the future; a spread-based liquidity elasticity
-built from the high-low range regresses volatility on volatility; and i.i.d.\
-$p$-values on overlapping forward drawdowns are the decisive one: on simulated
-markets with no predictability at all, one replication in five yields
-$p < 10^{-6}$. We then run a pre-registered test on real
-speculative positions: CFTC leveraged-fund and managed-money net positions in
-32 futures markets, 2006--2026, with a causal phase. Speculative positioning
-does phase-lock across markets far beyond a circular-shift null (mean order
-parameter 0.287 against 0.156, $p = 0.0005$), and the order parameter is nearly
-orthogonal to correlation-based crowding measures. Yet it does not predict
-4-week returns, drawdowns or volatility of the speculative book after
-controls (Romano--Wolf adjusted $p \geq 0.33$), in or out of sample.
-Synchronization of real positioning is real; its use as a crowding warning is
-not supported.
+Coupled-oscillator (Kuramoto) measures are proposed as crowding indicators:
+when traders' position cycles align, synchronized exits should follow. We
+test this on CFTC leveraged-fund and managed-money positions in 32 futures
+markets with a causal phase and a pre-registered design. Pooled, the order
+parameter predicts neither returns, drawdowns nor volatility of the
+speculative book, in or out of sample, and its excess over independence is
+89\% ordinary comovement of positions. Exploratory splits tell a different
+story: in currencies, synchronization precedes deeper drawdowns of the
+leveraged-fund book beyond aggregate positioning ($-0.24$ s.d., out-of-sample
+$R^2$ of 6.8\%), while in commodities it precedes continuation. We register
+held-out tests of both.
 \end{abstract}
 
-\medskip
-\noindent\textbf{Keywords:} crowding, synchronization, Kuramoto model,
-Commitments of Traders, look-ahead bias, pre-registration.
-\quad\textbf{JEL:} G11, G14, G17, C58.
+\begin{keyword}
+crowding \sep synchronization \sep Kuramoto model \sep Commitments of Traders
+\sep currency crash risk \sep pre-registration
+\JEL G11 \sep G13 \sep G14 \sep G17
+\end{keyword}
+\end{frontmatter}
 
 \section{Introduction}
 
-Crowding, the convergence of many investors on the same positions, is a
-recognised channel of systemic fragility \citep{Pedersen2009,Brunnermeier2009}.
-Holdings-based measures arrive with a lag; return-based measures capture the
-consequences rather than the crowding itself. Synchronization models from
-statistical physics offer an appealing alternative: map each strategy to a
-phase oscillator, measure the Kuramoto order parameter
-$r(t) = |N^{-1}\sum_i e^{i\theta_i(t)}|$, and read high $r$ as crowding
-\citep{Strogatz2000,Acebron2005}.
+Crowded positions unwind together \citep{Pedersen2009,Stein2009,KhandaniLo2011}.
+Measures of crowding infer it from holdings, from return comovement
+\citep{LouPolk2022}, or from futures positioning, which also carries hedging
+pressure \citep{Bessembinder1992,deRoon2000,KangRouwenhorstTang2020}. In
+currencies, speculative net positions predict crash risk
+\citep{BrunnermeierNagelPedersen2008}. Synchronization models from physics add
+a different object: map each trader group to a phase oscillator and measure
+alignment with the Kuramoto order parameter
+$r(t) = |N^{-1}\sum_i e^{i\theta_i(t)}|$ \citep{Strogatz2000,Acebron2005}.
+High $r$ is read as crowding.
 
-This note does two things. First, it documents three flaws that invalidate
-predictive evidence for such a measure, and shows by simulation which of them
-actually manufactures significance (Section~\ref{sec:pitfalls}).
-We found all three in our own earlier, unpublished, rejected work; we state
-them generally because each is easy to reproduce. Second, it runs the test the
-crowding claim actually requires: synchronization of \emph{real} speculative
-positions, measured causally, with a pre-registered predictive test
-(Section~\ref{sec:prereg}). The pre-registration, with its decision rule, was
-committed before any outcome was computed.
+This letter tests that reading on real positions. An earlier, unpublished
+version of this framework built phases from synthetic strategies with an
+event-anchored phase that interpolated to the next flow peak, hence used
+future data, and estimated a liquidity elasticity from a Corwin--Schultz
+spread, which is itself a function of the high--low range
+(Appendix~\ref{app:earlier}). We replace both with a causal phase on CFTC
+positions, pre-register the test, and report everything that followed:
+a registered null, a review that exposed why it is null, the exploratory
+sub-market effects behind it, and a registered held-out test of those
+effects.
 
-The result is a clean split. Real speculative positioning phase-locks across
-futures markets well beyond chance, at times one can name (late 2008, the QE2
-reflation into May 2011, the end of 2015, early 2021). The order parameter
-carries information that correlation and principal-component crowding measures
-do not. But it does not forecast the losses, drawdowns or volatility that a
-crowding warning should forecast.
-
-\section{Three pitfalls}
-\label{sec:pitfalls}
-
-\subsection{Event-anchored phases that see the next event}
-
-A popular way to extract a phase from a non-oscillatory flow series is to
-anchor it to events: a buying burst is assigned phase $0$, the next selling
-burst phase $\pi$, and the phase is interpolated linearly in between. The
-interpolation needs the date of the \emph{next} burst. At date $t$ the phase
-therefore encodes the time remaining until the strategy reverses, which is
-exactly the information a forward-drawdown regression rewards.
-Figure~\ref{fig:lookahead} shows it on a single position series with irregular
-holding periods: the interpolated phase reaches $\pi$ precisely at each future
-reversal, while a causal phase built from past bursts only, extrapolated at the
-median past half-cycle, cannot.
-
-A direct check is simple and should be routine: alter the input after date
-$\tau$ and verify that no output before $\tau$ changes. On a noisy sinusoidal
-position the interpolating implementation fails it (11 phases before
-$\tau = 350$ change when the input after $\tau$ is flipped); the causal one
-passes. Peak detection that compares $q_t$ with $q_{t+1}$ adds a further
-one-step leak.
-
-Does the leak bias the statistic reported in this literature? We simulate
-20 markets with independent, zero-mean returns and log-AR(1) stochastic
-volatility over 3{,}000 days, so that nothing is predictable, run six trend
-strategies per market (four time-series momentum lookbacks and two moving-average
-crossovers), and compute the Spearman correlation between $r(t)$ and the 21-day
-forward maximum drawdown of the equal-weight strategy portfolio, in 200
-independent replications (Table~\ref{tab:mc}). The leak does not shift this
-particular statistic: the mean correlation is $-0.0004$ with the interpolating
-phase and $-0.008$ with the causal one, with the same dispersion. The
-look-ahead is a validity violation that any predictive use must remove, but in
-this design it is not what produces significant correlations. The inference is
-(Section~\ref{sec:iid}).
-
-\begin{table}[t]
-\centering
-\caption{Spearman correlation between $r(t)$ and the 21-day forward maximum
-drawdown on 200 simulated universes with no predictability (20 markets,
-120 trend strategies, 3{,}000 days). $p$ is the standard i.i.d.\ rank-correlation
-$p$-value.}
-\label{tab:mc}
-\small
-\begin{tabular}{lrrrrr}
-\toprule
-Phase & mean $\rho$ & s.d.\ $\rho$ & range of $\rho$ & share $p<0.05$ & share $p<10^{-6}$ \\
-\midrule
-Interpolating (event-anchored) & $-0.0004$ & $0.070$ & $[-0.18,\ 0.19]$ & $0.64$ & $0.18$ \\
-Causal (past events only)      & $-0.008$ & $0.072$ & $[-0.17,\ 0.18]$ & $0.59$ & $0.23$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\textwidth]{fig_lookahead.pdf}
-\caption{Event-anchored phase on a position with irregular holding periods.
-The interpolating phase (solid) reaches $\pi$ and $2\pi$ exactly at the next
-reversal, which it cannot know at the time; the causal phase (dashed) uses past
-bursts only and must guess the duration.}
-\label{fig:lookahead}
-\end{figure}
-
-\subsection{A spread elasticity that is volatility on volatility}
-
-Crowding models often rest on a liquidity elasticity $\beta$, estimated from
-$\log V_t = \alpha - \beta\log\sigma_t + \varepsilon_t$ with $V_t$ the inverse
-of a spread. When the spread is the \citet{Corwin2012} estimator, $V_t$ is a
-function of the daily high-low range, itself a volatility estimator, and
-$\beta$ is mechanically positive. We simulate a market whose true spread is
-constant, so that liquidity never responds to volatility and the true $\beta$
-is zero, and apply the estimator with a 21-day close-to-close $\sigma_t$. The
-estimate is $\hat\beta = 0.87$ ($R^2 = 0.25$) with a zero spread, $0.81$ with
-2~bp and $0.71$ with 10~bp: values typical of those reported on real futures
-(a mean of 0.73 across 43 CME contracts in our earlier work). Quote-based
-elasticities are not immune either: in our tick data, replacing contemporaneous
-realized volatility by its one-day lag, to remove bid-ask bounce, leaves a rank
-correlation of only 0.24 with the baseline estimates (24 of 43 signs change);
-a 5-day median leaves 0.05.
-
-\subsection{i.i.d.\ inference on overlapping horizons}
-\label{sec:iid}
-
-A 21-day forward drawdown sampled daily overlaps with its 20 neighbours, and
-$r(t)$ is itself persistent (weekly AR(1) of 0.77 on real positions). A
-standard rank-correlation $p$-value treats these observations as independent.
-Table~\ref{tab:mc} shows what that does when nothing is predictable: 59--64\%
-of the replications are ``significant'' at 5\%, and 18--23\% reach
-$p < 10^{-6}$. The null correlations have a standard deviation of 0.07 and
-reach $\pm 0.19$: in this design a correlation near 0.2 is roughly a
-three-standard-deviation event, not a one-in-a-million one, and our earlier
-headline figure ($\rho = 0.196$, reported with $p < 10^{-6}$, from a larger
-but similarly overlapping design) sits at the edge of what pure noise produces
-here. Every inference below uses a stationary block bootstrap \citep{Politis1994}
-and Newey--West standard errors.
-
-\section{A pre-registered test on real positions}
-\label{sec:prereg}
-
-\subsection{Data and design}
+\section{Data and registered design}
+\label{sec:design}
 
 Positions are the weekly CFTC Commitments of Traders, futures only, Tuesday
-as-of: leveraged funds in the Traders in Financial Futures report for equity
-indices, Treasuries and currencies, managed money in the disaggregated report
-for energy, metals, grains and livestock. The net position of market $i$ is
-$x_i(t) = (\text{long} - \text{short})/\text{open interest}$. A report is used
-from the first trading day on or after the Monday following its Tuesday as-of
-date (it is released on Friday afternoon), and report weeks around the 2013,
-2018--19 and 2025 government shutdowns, when releases were late, are excluded.
-The universe is every market with at least 85\% coverage of both the CFTC
-series (2009--2026) and our daily continuous futures (2010--2026): 32 markets.
+as-of: leveraged funds in the Traders in Financial Futures report (equity
+indices, Treasuries, currencies) and managed money in the disaggregated
+report (energy, metals, grains, livestock). The net position of market $i$ is
+$x_i(t) = (\text{long} - \text{short})/\text{open interest}$. Archives were
+downloaded on 7 November 2026; histories before 2009--2010 are CFTC back-casts.
+A report enters from the first trading day on or after the Monday following
+its as-of date (it is released on Friday), and report weeks around the 2013,
+2018--19 and 2025 shutdowns are excluded. Prices are back-adjusted daily
+futures; returns are daily price changes scaled by trailing volatility. The
+universe is every market with at least 85\% coverage of both the CFTC series
+(2009--2026) and our price files (2010--2026): 32 markets. The price
+requirement removes the softs, palladium and KC wheat.
 
-The primary phase is causal and needs no event detection. With $z_i(t)$ the
-156-week trailing z-score of $x_i$ and $d_i(t)$ the trailing z-score of its
-weekly change,
-\begin{equation}
-\theta_i(t) = \operatorname{atan2}\bigl(-d_i(t),\, z_i(t)\bigr),
-\end{equation}
-so that $0$ is a maximal long, $\pi/2$ selling out of it, $\pi$ a maximal
-short and $3\pi/2$ buying. Two secondary variants are reported without
-decision weight: the nematic order parameter $|N^{-1}\sum_i e^{2i\theta_i}|$,
-which treats long and short extremes as aligned, and the causal version of the
-event-anchored phase of Section~\ref{sec:pitfalls}.
+The phase is causal: with $z_i(t)$ the 156-week trailing z-score of $x_i$ and
+$d_i(t)$ the weekly change of $x_i$ divided by the trailing standard deviation
+of changes, $\theta_i(t) = \operatorname{atan2}(-d_i, z_i)$, so that 0 is a
+maximal long and $\pi$ a maximal short. Every phase at $t$ is unchanged when
+data after $t$ are altered (tested).
 
-\textbf{H1} (synchronization exists): the mean of $r(t)$ exceeds the
-distribution obtained by circularly shifting each market's phase series by an
-independent random offset (2{,}000 surrogates), which keeps each market's own
-dynamics and destroys cross-market alignment; threshold $p < 0.01$.
+The registered hypotheses were: H1, mean $r$ exceeds a null that circularly
+shifts each market's phase series ($p<0.01$); H2, $r$ predicts at least one of
+the 4-week return (Y1), maximum drawdown (Y2) or volatility ratio (Y3) of the
+speculative book (each market long or short with the sign of $x_i$,
+volatility-scaled, equal weight), with controls for the book's trailing
+return, trailing volatility ratio, pairwise correlation and first-component
+share of position changes, and mean $|z_i|$; stationary block bootstrap
+\citep{PolitisRomano1994} and Romano--Wolf adjustment \citep{RomanoWolf2005};
+H3, out-of-sample improvement over the model without $r$ \citep{ClarkWest2007},
+training to 2017 and testing on 2018--2026. A full crowding paper required all
+three. The registration (\texttt{PREREG.md}) and code were committed before
+each run; these timestamps are self-reported, not an external registration.
+A first run, affected by a loading bug, used only the 16 commodity markets; it
+is kept and reported in the package.
 
-\textbf{H2} (synchronization precedes unwinds): in weekly regressions with
-4-week horizons (770 weeks, entries 2010-08 to 2026-01), $r(t)$ predicts at
-least one of: Y1, the return of the speculative book (each market long or
-short with the sign of $x_i$, volatility-scaled, equal weight); Y2, its maximum
-drawdown; Y3, the cross-market log ratio of forward to trailing realized
-volatility. Controls: the book's trailing 4-week return, the trailing
-volatility ratio, the mean pairwise correlation of position changes over 13
-weeks, the first-principal-component share of position changes over 26 weeks,
-and the mean absolute position z-score. Inference: stationary block bootstrap
-(mean block 26 weeks, 5{,}000 draws) with a Romano--Wolf step-down across the
-three outcomes \citep{RomanoWolf2005}; predicted signs $b<0$ for Y1 and Y2,
-$b>0$ for Y3.
-
-\textbf{H3} (out of sample): fit on entries to 2017, forecast 2018--2026, and
-test against the model without $r(t)$ \citep{ClarkWest2007}.
-
-The decision rule, fixed in advance: if H1 fails, the crowding claim is
-abandoned; if H1 holds and H2 fails, synchronization is descriptive only; a
-full crowding paper requires H1, H2 and H3.
-
-\subsection{Results}
+\section{Registered results}
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{fig_r_real.pdf}
 \caption{Order parameter of speculative positioning across 32 futures markets
-(causal phase, 4-week mean) against the 5--95\% band of 500 circular-shift
-surrogates.}
+(causal phase, 4-week mean) against the pointwise 5--95\% band of 500
+circular-shift surrogates. Under the null about 5\% of weeks exceed the band.}
 \label{fig:r}
 \end{figure}
 
-\paragraph{H1 holds.} The mean order parameter is 0.287 against a surrogate
-mean of 0.156 (99th percentile 0.181; ratio 1.84; $p = 0.0005$, the smallest
-attainable with 2{,}000 surrogates). The surrogate mean equals the i.i.d.\
-floor $\sqrt{\pi/4N} = 0.157$, so the shifted series behave as independent
-phases. Synchronization holds within financial markets (0.312 against 0.228)
-and within commodities (0.368 against 0.225), and with the causal
-event-anchored phase (0.211 against 0.156). Figure~\ref{fig:r} shows that it is
-episodic: $r$ leaves the null band in late 2008, from the QE2 reflation trade
-into the commodity sell-off of May 2011, at the end of 2015 and in early 2021.
-The order parameter is nearly orthogonal to standard crowding proxies: its
-Spearman correlation with the pairwise correlation of position changes is
-$-0.05$, with the first-component share $-0.05$, with the mean absolute
-position z-score $0.10$. It measures alignment in the position-and-flow plane,
-which correlation of flows alone does not see.
+H1 holds as registered: mean $r$ is 0.287 against a surrogate mean of 0.156
+($p=0.0005$, the smallest attainable with 2{,}000 surrogates), equal to the
+independence floor $\sqrt{\pi/4N}=0.157$ (Figure~\ref{fig:r}). H2 and H3 fail
+(Table~\ref{tab:h2}): no outcome has an adjusted $p$ below 0.33, and
+out-of-sample $R^2$ stays under 1\%. The test could detect effects of about
+0.15 s.d.\ of the outcome; for drawdowns the 95\% interval reaches
+$-0.20$ s.d., so small crowding effects are not excluded.
 
 \begin{table}[t]
 \centering
-\caption{Pre-registered predictive tests (H2, H3). Standardized coefficient
-$b$ on $r(t)$ with controls; $t$ from Newey--West (8 lags); $p_{RW}$
-Romano--Wolf adjusted from 5{,}000 stationary-bootstrap draws; Clark--West
-one-sided $p$ and out-of-sample $R^2$ relative to the model without $r(t)$
-(training to 2017, 396 test weeks).}
+\caption{Registered predictive tests, 32 markets (770 weeks, entries 2010-08
+to 2026-01). $b$: coefficient on $r$ in s.d.\ of the outcome, with Newey--West
+95\% interval; $p_{RW}$: Romano--Wolf adjusted; $p_{CW}$: Clark--West
+one-sided, 396 test weeks; MDE: minimum detectable effect, 80\% power.}
 \label{tab:h2}
 \small
-\begin{tabular}{llrrrrr}
+\begin{tabular}{lrrrrrr}
 \toprule
-Phase & Outcome & $b$ & $t_{NW}$ & $p_{RW}$ & $p_{CW}$ & $R^2_{oos}$ \\
+Outcome & $b$ & 95\% interval & $p_{RW}$ & $p_{CW}$ & $R^2_{oos}$ & MDE \\
 \midrule
-Primary & Y1 return      & $0.054$ & $0.71$ & $0.78$ & $0.40$ & $0.000$ \\
-        & Y2 drawdown    & $-0.080$ & $-1.58$ & $0.33$ & $0.21$ & $0.005$ \\
-        & Y3 vol. spike  & $-0.002$ & $-0.27$ & $0.78$ & $0.82$ & $-0.006$ \\
-\addlinespace
-Nematic & Y1 return      & $-0.128$ & $-1.91$ & $0.06$ & $0.08$ & $0.007$ \\
-        & Y2 drawdown    & $-0.100$ & $-2.22$ & $0.02$ & $0.13$ & $0.006$ \\
-        & Y3 vol. spike  & $0.000$ & $-0.01$ & $0.99$ & $0.56$ & $0.000$ \\
-\addlinespace
-Causal events & Y1 return & $-0.078$ & $-1.28$ & $0.39$ & $0.07$ & $0.002$ \\
-        & Y2 drawdown    & $0.002$ & $0.05$ & $0.96$ & $0.51$ & $0.000$ \\
-        & Y3 vol. spike  & $0.003$ & $0.35$ & $0.92$ & $0.80$ & $-0.008$ \\
+Y1 return     & $0.04$ & $[-0.07,\ 0.15]$ & 0.78 & 0.40 & 0.000 & 0.16 \\
+Y2 drawdown   & $-0.09$ & $[-0.20,\ 0.02]$ & 0.33 & 0.21 & 0.005 & 0.16 \\
+Y3 vol.\ ratio & $-0.01$ & $[-0.11,\ 0.09]$ & 0.78 & 0.82 & $-0.006$ & 0.14 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\paragraph{H2 and H3 fail.} Table~\ref{tab:h2} reports the predictive tests.
-With the primary phase, no outcome comes close: adjusted $p$-values of 0.78,
-0.33 and 0.78, and out-of-sample $R^2$ below one percent. The nematic variant,
-which counts simultaneous long and short extremes as aligned, has the predicted
-sign for drawdowns ($p_{RW} = 0.02$) but does not survive out of sample
-($p_{CW} = 0.13$) and carries no weight under the pre-registered rule; we
-report it as a lead for a separate, newly registered test.
+\section{Why the pooled test is null (exploratory)}
 
-\paragraph{A disclosed first run.} Our first run loaded only the 2006--2016
-financial archive because of a file-name pattern, and its universe was the 16
-commodity markets. On that sub-universe the primary order parameter predicts
-4-week returns of the speculative book with the \emph{opposite} sign to the
-crowding thesis ($b = 0.33$, $t_{NW} = 3.20$, $p_{RW} = 0.004$; out of sample
-$p_{CW} = 0.02$): synchronized commodity positioning was followed by
-continuation, not unwinding. The bug was fixed, documented in a dated
-amendment, and the 32-market run is the registered result; we mention the
-commodity result because it shows how much a single universe choice can
-change the conclusion.
+The analyses in this section were run after the registered results and an
+adversarial review; they are hypothesis-generating.
+
+\paragraph{H1 is mostly comovement.} The circular-shift null removes all
+dependence between markets, so any common factor rejects it. A multivariate
+Fourier surrogate of weekly position changes keeps every cross-correlation
+and spectrum and randomizes the rest \citep{PrichardTheiler1994}. Against it,
+synchronization is marginal (Table~\ref{tab:ft}): 89\% of the excess of $r$
+over independence is linear comovement, as expected when traders respond to
+common shocks \citep{TeramaeTanaka2004}. Only commodities keep a clear excess
+($p=0.006$). The order parameter is also close to a breadth measure: its rank
+correlation with $|N^{-1}\sum_i \operatorname{sign} z_i|$ is 0.80, and phases
+reduced to the sign of $z_i$ give a mean $r$ of 0.271 against 0.287.
+
+\begin{table}[t]
+\centering
+\caption{Mean $r$ against two nulls (500 surrogates each; complete-case
+panels, so the observed values differ slightly from the registered one).
+Share: part of the excess over the circular-shift mean that the
+Fourier null reproduces.}
+\label{tab:ft}
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+Markets & observed & circular mean & Fourier mean & $p_{\text{Fourier}}$ & share \\
+\midrule
+All 32 & 0.277 & 0.160 & 0.264 & 0.036 & 0.89 \\
+Commodities (16) & 0.368 & 0.225 & 0.342 & 0.006 & 0.82 \\
+Financials (16) & 0.306 & 0.233 & 0.298 & 0.194 & 0.89 \\
+\quad Currencies (8) & 0.424 & 0.315 & 0.417 & 0.253 & 0.93 \\
+\quad Rates and equity (8) & 0.427 & 0.329 & 0.404 & 0.052 & 0.76 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{The pooled null averages opposite effects.} Table~\ref{tab:sub}
+splits the registered H2 and H3. In currencies, higher $r$ precedes deeper
+drawdowns of the leveraged-fund book ($-0.26$ s.d., $t=-4.85$), out of sample
+as well ($R^2_{oos}=6.8\%$). In commodities, it precedes higher returns of
+the managed-money book ($+0.18$ s.d.), consistent with trend continuation
+\citep{MoskowitzOoiPedersen2012}. Rates and equity indices show a drawdown
+effect too, but there leveraged funds are net short in most weeks in the
+longer Treasury contracts and the S\&P~500 contract (UB 100\%, ES 98\%, ZB
+84\%, ZF 71\%), positions that partly reflect basis trades and hedges of cash
+holdings rather than directional bets \citep{BarthKahn2021}; the effect there
+disappears once aggregate positioning is controlled.
+With $|N^{-1}\sum_i z_i|$ and $N^{-1}\sum_i z_i$ added, the channel of
+\citet{BrunnermeierNagelPedersen2008}, the currency effect stays
+($-0.24$ s.d., $t=-3.47$, $p_{RW}=0.001$) and so does commodity continuation
+($+0.13$ s.d., $t=2.14$, $p_{RW}=0.034$). Five sub-universes and three
+outcomes make 15 tests. With the registered controls both effects survive a
+Bonferroni correction across them; with aggregate positioning added, only
+the currency effect does.
+
+\begin{table}[t]
+\centering
+\caption{Exploratory split of the registered tests (registered controls).
+Last column: coefficient on $r$ with aggregate positioning
+($|N^{-1}\sum z_i|$, $N^{-1}\sum z_i$) added, $t$ in brackets.}
+\label{tab:sub}
+\small
+\begin{tabular}{llrrrrr}
+\toprule
+Markets & Outcome & $b$ & $t_{NW}$ & $p_{CW}$ & $R^2_{oos}$ & $b$ with positioning \\
+\midrule
+Currencies (8) & Y2 drawdown & $-0.26$ & $-4.85$ & $<0.001$ & 0.068 & $-0.24$ [$-3.47$] \\
+Rates, equity (8) & Y2 drawdown & $-0.28$ & $-3.81$ & $<0.001$ & 0.050 & $-0.13$ [$-1.48$] \\
+Commodities (16) & Y1 return & $0.18$ & $3.20$ & 0.020 & 0.026 & $0.13$ [$2.14$] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Registered held-out tests}
+
+All the effects above come from data already examined. We therefore register
+(\texttt{CONFIRM\_PREREG.md}, OSF: \url{OSF_LINK}) three one-sided tests on
+outcomes no analysis has looked at, each at $\alpha = 0.05/3$, with the
+registered controls plus aggregate positioning: CH1, currency $r$ predicts
+deeper drawdowns of the currency book on entries from March 2026 to December
+2028 (no price after 24 February 2026 has been loaded); CH2a, commodity $r$
+predicts higher returns of a managed-money book on six commodity markets never
+used in any outcome analysis (cocoa, cotton, coffee, sugar, KC wheat,
+palladium); CH2b, the commodity effect on the time hold-out. The code refuses
+to run before the registration is recorded and the time hold-out before
+February 2029. Power is limited and stated in advance: 44\% for CH1 at the
+in-sample effect and 13\% at half of it, 17--30\% for CH2a.
 
 \section{Conclusion}
 
-Real speculative positions phase-lock across futures markets, in identifiable
-episodes, and the Kuramoto order parameter captures an alignment that
-correlation-based crowding measures miss. None of this translates into a
-warning: in a pre-registered design with point-in-time data, synchronization
-predicts neither losses, nor drawdowns, nor volatility of the speculative book.
-Studies that report the opposite should show that their phases are causal
-(an alteration test costs one line), that their liquidity elasticities are not
-built from volatility, and that their inference respects overlapping horizons.
+Speculative positions across futures markets move together, but most of that
+alignment is ordinary comovement, and pooled synchronization is not a crowding
+warning. The pooled null hides two opposite effects: synchronized
+leveraged-fund currency positioning precedes crash risk beyond the level of
+positioning, and synchronized commodity positioning precedes continuation.
+Both are exploratory and both are now registered for held-out tests.
 
-\bibliographystyle{plainnat}
-\begin{thebibliography}{9}
+\section*{Declaration of competing interest}
+The author declares no competing interests.
+
+\section*{Funding}
+This research received no specific grant from any funding agency.
+
+\section*{Data availability}
+Code, both pre-registrations, every result file and the CFTC download script
+are at \url{REPO_LINK} (archived as \url{DOI_LINK}). CFTC data are public.
+Futures prices are licensed (Databento) and not redistributed; the weekly
+outcome and control rows are included.
+
+\section*{Declaration of generative AI and AI-assisted technologies in the writing process}
+During the preparation of this work the author used Claude (Anthropic) in
+order to write and test analysis code, run an adversarial review of the
+manuscript, and draft text. After using this tool, the author reviewed and
+edited the content as needed and takes full responsibility for the content of
+the publication.
+
+\section*{CRediT authorship contribution statement}
+\textbf{Arjun Kathiravelu}: Conceptualization, Methodology, Software, Formal
+analysis, Data curation, Writing -- original draft, Writing -- review \&
+editing.
+
+\appendix
+\section{Two flaws of the earlier framework}
+\label{app:earlier}
+
+\paragraph{Event-anchored phases.} Assigning phase 0 to a buying burst, $\pi$
+to the next selling burst and interpolating in between needs the date of the
+next burst; peak detection that compares $q_t$ with $q_{t+1}$ adds a one-step
+leak. Altering a position series after date $\tau$ changes the interpolated
+phases before $\tau$; the causal phase of Section~\ref{sec:design} does not
+move.
+
+\paragraph{A spread elasticity built from volatility.} The Corwin--Schultz
+spread is a function of the daily high--low range, which scales with
+volatility \citep{AbdiRanaldo2017}. Simulating a market whose true spread is
+constant (true elasticity zero) and regressing $\log(1/S_t)$ on log
+volatility gives elasticities of 0.71 to 0.87, close to the mean of 0.73
+that the earlier framework reported across 43 CME futures.
+
+\paragraph{Inference.} The earlier work reported i.i.d.\ $p$-values for
+correlations between a persistent $r(t)$ and overlapping 21-day forward
+drawdowns. Such $p$-values are known to be far too small
+\citep{HansenHodrick1980,Valkanov2003}; all inference here is
+dependence-robust.
+
+\begin{thebibliography}{99}
+\bibitem[Abdi and Ranaldo(2017)]{AbdiRanaldo2017}
+Abdi, F., Ranaldo, A., 2017. A simple estimation of bid-ask spreads from daily close, high, and low prices. Review of Financial Studies 30, 4437--4480.
 \bibitem[Acebr\'on et~al.(2005)]{Acebron2005}
-Acebr\'on, J.~A., Bonilla, L.~L., P\'erez Vicente, C.~J., Ritort, F., and Spigler, R. (2005).
-The Kuramoto model: A simple paradigm for synchronization phenomena.
-\emph{Reviews of Modern Physics}, 77(1):137--185.
-\bibitem[Brunnermeier and Pedersen(2009)]{Brunnermeier2009}
-Brunnermeier, M.~K. and Pedersen, L.~H. (2009).
-Market liquidity and funding liquidity.
-\emph{Review of Financial Studies}, 22(6):2201--2238.
+Acebr\'on, J.A., Bonilla, L.L., P\'erez Vicente, C.J., Ritort, F., Spigler, R., 2005. The Kuramoto model: a simple paradigm for synchronization phenomena. Reviews of Modern Physics 77, 137--185.
+\bibitem[Barth and Kahn(2021)]{BarthKahn2021}
+Barth, D., Kahn, R.J., 2021. Hedge funds and the Treasury cash-futures disconnect. Office of Financial Research Working Paper 21-01.
+\bibitem[Bessembinder(1992)]{Bessembinder1992}
+Bessembinder, H., 1992. Systematic risk, hedging pressure, and risk premiums in futures markets. Review of Financial Studies 5, 637--667.
+\bibitem[Brunnermeier et~al.(2008)]{BrunnermeierNagelPedersen2008}
+Brunnermeier, M.K., Nagel, S., Pedersen, L.H., 2008. Carry trades and currency crashes. NBER Macroeconomics Annual 23, 313--347.
 \bibitem[Clark and West(2007)]{ClarkWest2007}
-Clark, T.~E. and West, K.~D. (2007).
-Approximately normal tests for equal predictive accuracy in nested models.
-\emph{Journal of Econometrics}, 138(1):291--311.
-\bibitem[Corwin and Schultz(2012)]{Corwin2012}
-Corwin, S.~A. and Schultz, P. (2012).
-A simple way to estimate bid-ask spreads from daily high and low prices.
-\emph{Journal of Finance}, 67(2):719--760.
+Clark, T.E., West, K.D., 2007. Approximately normal tests for equal predictive accuracy in nested models. Journal of Econometrics 138, 291--311.
+\bibitem[de~Roon et~al.(2000)]{deRoon2000}
+de Roon, F.A., Nijman, T.E., Veld, C., 2000. Hedging pressure effects in futures markets. Journal of Finance 55, 1437--1456.
+\bibitem[Hansen and Hodrick(1980)]{HansenHodrick1980}
+Hansen, L.P., Hodrick, R.J., 1980. Forward exchange rates as optimal predictors of future spot rates: an econometric analysis. Journal of Political Economy 88, 829--853.
+\bibitem[Kang et~al.(2020)]{KangRouwenhorstTang2020}
+Kang, W., Rouwenhorst, K.G., Tang, K., 2020. A tale of two premiums: the role of hedgers and speculators in commodity futures markets. Journal of Finance 75, 377--417.
+\bibitem[Khandani and Lo(2011)]{KhandaniLo2011}
+Khandani, A.E., Lo, A.W., 2011. What happened to the quants in August 2007? Evidence from factors and transactions data. Journal of Financial Markets 14, 1--46.
+\bibitem[Lou and Polk(2022)]{LouPolk2022}
+Lou, D., Polk, C., 2022. Comomentum: inferring arbitrage activity from return correlations. Review of Financial Studies 35, 3272--3302.
+\bibitem[Moskowitz et~al.(2012)]{MoskowitzOoiPedersen2012}
+Moskowitz, T.J., Ooi, Y.H., Pedersen, L.H., 2012. Time series momentum. Journal of Financial Economics 104, 228--250.
 \bibitem[Pedersen(2009)]{Pedersen2009}
-Pedersen, L.~H. (2009).
-When everyone runs for the exit.
-\emph{International Journal of Central Banking}, 5(4):177--199.
-\bibitem[Politis and Romano(1994)]{Politis1994}
-Politis, D.~N. and Romano, J.~P. (1994).
-The stationary bootstrap.
-\emph{Journal of the American Statistical Association}, 89(428):1303--1313.
+Pedersen, L.H., 2009. When everyone runs for the exit. International Journal of Central Banking 5, 177--199.
+\bibitem[Politis and Romano(1994)]{PolitisRomano1994}
+Politis, D.N., Romano, J.P., 1994. The stationary bootstrap. Journal of the American Statistical Association 89, 1303--1313.
+\bibitem[Prichard and Theiler(1994)]{PrichardTheiler1994}
+Prichard, D., Theiler, J., 1994. Generating surrogate data for time series with several simultaneously measured variables. Physical Review Letters 73, 951--954.
 \bibitem[Romano and Wolf(2005)]{RomanoWolf2005}
-Romano, J.~P. and Wolf, M. (2005).
-Stepwise multiple testing as formalized data snooping.
-\emph{Econometrica}, 73(4):1237--1282.
+Romano, J.P., Wolf, M., 2005. Stepwise multiple testing as formalized data snooping. Econometrica 73, 1237--1282.
+\bibitem[Stein(2009)]{Stein2009}
+Stein, J.C., 2009. Presidential address: sophisticated investors and market efficiency. Journal of Finance 64, 1517--1548.
 \bibitem[Strogatz(2000)]{Strogatz2000}
-Strogatz, S.~H. (2000).
-From Kuramoto to Crawford: exploring the onset of synchronization in populations of coupled oscillators.
-\emph{Physica D}, 143(1--4):1--20.
+Strogatz, S.H., 2000. From Kuramoto to Crawford: exploring the onset of synchronization in populations of coupled oscillators. Physica D 143, 1--20.
+\bibitem[Teramae and Tanaka(2004)]{TeramaeTanaka2004}
+Teramae, J., Tanaka, D., 2004. Robustness of the noise-induced phase synchronization in a general class of limit cycle oscillators. Physical Review Letters 93, 204103.
+\bibitem[Valkanov(2003)]{Valkanov2003}
+Valkanov, R., 2003. Long-horizon regressions: theoretical results and applications. Journal of Financial Economics 68, 201--232.
 \end{thebibliography}
 
 \end{document}
