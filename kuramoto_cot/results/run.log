@@ -1,0 +1,311 @@
+{
+  "prereg_commit": "676c300",
+  "universe": [
+    "AUD.FUT",
+    "CAD.FUT",
+    "CHF.FUT",
+    "CL",
+    "ES",
+    "EUR.FUT",
+    "GBP.FUT",
+    "GC",
+    "GF",
+    "HE",
+    "HG",
+    "HO",
+    "JPY.FUT",
+    "LE",
+    "MXN.FUT",
+    "NG",
+    "NQ",
+    "NZD.FUT",
+    "PL",
+    "RB",
+    "SI",
+    "UB",
+    "YM",
+    "ZB",
+    "ZC",
+    "ZF",
+    "ZL",
+    "ZM",
+    "ZN",
+    "ZS",
+    "ZT",
+    "ZW"
+  ],
+  "n_universe": 32,
+  "excluded": [
+    "CC",
+    "CT",
+    "EMD",
+    "KC",
+    "KE",
+    "NKD",
+    "PA",
+    "RTY",
+    "SB",
+    "TN"
+  ],
+  "H1_primary": {
+    "r_mean": 0.2873586339198413,
+    "null_mean": 0.15635740679263924,
+    "null_p95": 0.17328418735080148,
+    "null_p99": 0.18140812506069498,
+    "ratio": 1.8378319250391222,
+    "p_one_sided": 0.0004997501249375312,
+    "iid_floor": 0.15690963030172722,
+    "n_markets_mean": 31.9,
+    "holds": true
+  },
+  "H1_S1_nematic": {
+    "r_mean": 0.25969445641434363,
+    "null_mean": 0.2462251073199726,
+    "null_p95": 0.24987100988055877,
+    "null_p99": 0.2513884553661285,
+    "ratio": 1.054703394146022,
+    "p_one_sided": 0.0004997501249375312,
+    "iid_floor": 0.15690963030172722,
+    "n_markets_mean": 31.9,
+    "holds": null
+  },
+  "H1_S2_sfb": {
+    "r_mean": 0.21079250195153423,
+    "null_mean": 0.15632789089514468,
+    "null_p95": 0.1647330079579834,
+    "null_p99": 0.16849635399481105,
+    "ratio": 1.348399832841864,
+    "p_one_sided": 0.0004997501249375312,
+    "iid_floor": 0.15679354591054415,
+    "n_markets_mean": 31.947252747252747,
+    "holds": null
+  },
+  "H1_S3_tff": {
+    "r_mean": 0.3117932817220635,
+    "null_mean": 0.22818831145803103,
+    "null_p95": 0.25026777658343674,
+    "null_p99": 0.25906910695875923,
+    "ratio": 1.3663858579338728,
+    "p_one_sided": 0.0004997501249375312,
+    "iid_floor": 0.22225235860503234,
+    "n_markets_mean": 15.9,
+    "holds": null,
+    "markets": [
+      "AUD.FUT",
+      "CAD.FUT",
+      "CHF.FUT",
+      "ES",
+      "EUR.FUT",
+      "GBP.FUT",
+      "JPY.FUT",
+      "MXN.FUT",
+      "NQ",
+      "NZD.FUT",
+      "UB",
+      "YM",
+      "ZB",
+      "ZF",
+      "ZN",
+      "ZT"
+    ]
+  },
+  "H1_S3_dis": {
+    "r_mean": 0.36821590641631324,
+    "null_mean": 0.22478289358223966,
+    "null_p95": 0.24811263586484547,
+    "null_p99": 0.261843393225119,
+    "ratio": 1.638095766756365,
+    "p_one_sided": 0.0004997501249375312,
+    "iid_floor": 0.22155673136318949,
+    "n_markets_mean": 16.0,
+    "holds": null,
+    "markets": [
+      "CL",
+      "GC",
+      "GF",
+      "HE",
+      "HG",
+      "HO",
+      "LE",
+      "NG",
+      "PL",
+      "RB",
+      "SI",
+      "ZC",
+      "ZL",
+      "ZM",
+      "ZS",
+      "ZW"
+    ]
+  },
+  "rows_before_dropna": 770,
+  "H2_primary": {
+    "n": 770,
+    "first_entry": "2010-08-30",
+    "last_entry": "2026-01-26",
+    "Y1_return": {
+      "b_std": 0.054206723329917945,
+      "t_nw": 0.7124199076017518,
+      "t_boot": 0.613177244872595,
+      "p_romano_wolf": 0.7778444311137772,
+      "predicted_sign": -1,
+      "supports": false,
+      "rejects_thesis": false
+    },
+    "Y2_maxdd": {
+      "b_std": -0.07955359486116062,
+      "t_nw": -1.577931704482109,
+      "t_boot": 1.4883756559924484,
+      "p_romano_wolf": 0.3281343731253749,
+      "predicted_sign": -1,
+      "supports": false,
+      "rejects_thesis": false
+    },
+    "Y3_volspike": {
+      "b_std": -0.0023941810985393212,
+      "t_nw": -0.2657759982370444,
+      "t_boot": 0.3045302656620843,
+      "p_romano_wolf": 0.7778444311137772,
+      "predicted_sign": 1,
+      "supports": false,
+      "rejects_thesis": false
+    },
+    "holds": false
+  },
+  "H3_primary": {
+    "Y1_return": {
+      "cw_mean": 0.003173034754921417,
+      "cw_t": 0.2562401596071974,
+      "p_one_sided": 0.3988827003031833,
+      "r2_oos_vs_small": 0.0002483633118576245,
+      "n": 396
+    },
+    "Y2_maxdd": {
+      "cw_mean": 0.012381681014189736,
+      "cw_t": 0.8137173252152046,
+      "p_one_sided": 0.20790345332514493,
+      "r2_oos_vs_small": 0.0054104105354859655,
+      "n": 396
+    },
+    "Y3_volspike": {
+      "cw_mean": -0.00018290174532688044,
+      "cw_t": -0.9201921789100984,
+      "p_one_sided": 0.8212638296631707,
+      "r2_oos_vs_small": -0.006250668173215734,
+      "n": 396
+    }
+  },
+  "H2_S1_nematic": {
+    "n": 770,
+    "first_entry": "2010-08-30",
+    "last_entry": "2026-01-26",
+    "Y1_return": {
+      "b_std": -0.12759655788926821,
+      "t_nw": -1.9078170910084786,
+      "t_boot": 2.11739809014799,
+      "p_romano_wolf": 0.0631873625274945,
+      "predicted_sign": -1,
+      "supports": false,
+      "rejects_thesis": false
+    },
+    "Y2_maxdd": {
+      "b_std": -0.10012406347451855,
+      "t_nw": -2.2213907115897773,
+      "t_boot": 2.7071123730143607,
+      "p_romano_wolf": 0.017196560687862426,
+      "predicted_sign": -1,
+      "supports": true,
+      "rejects_thesis": false
+    },
+    "Y3_volspike": {
+      "b_std": -7.887154452452735e-05,
+      "t_nw": -0.010673202695474303,
+      "t_boot": 0.011478601031197395,
+      "p_romano_wolf": 0.9906018796240752,
+      "predicted_sign": 1,
+      "supports": false,
+      "rejects_thesis": false
+    },
+    "holds": true
+  },
+  "H3_S1_nematic": {
+    "Y1_return": {
+      "cw_mean": 0.02130078066657813,
+      "cw_t": 1.3790102911954987,
+      "p_one_sided": 0.08394579046156536,
+      "r2_oos_vs_small": 0.00683288752631539,
+      "n": 396
+    },
+    "Y2_maxdd": {
+      "cw_mean": 0.014285885358543126,
+      "cw_t": 1.1410280819890075,
+      "p_one_sided": 0.126929118562089,
+      "r2_oos_vs_small": 0.005555044754001259,
+      "n": 396
+    },
+    "Y3_volspike": {
+      "cw_mean": -8.218623227994023e-07,
+      "cw_t": -0.14032367748774827,
+      "p_one_sided": 0.5557978712615312,
+      "r2_oos_vs_small": -2.5088952501306494e-05,
+      "n": 396
+    }
+  },
+  "H2_S2_sfb": {
+    "n": 770,
+    "first_entry": "2010-08-30",
+    "last_entry": "2026-01-26",
+    "Y1_return": {
+      "b_std": -0.0776500534754634,
+      "t_nw": -1.2782450109091563,
+      "t_boot": 1.3362554213151445,
+      "p_romano_wolf": 0.39432113577284544,
+      "predicted_sign": -1,
+      "supports": false,
+      "rejects_thesis": false
+    },
+    "Y2_maxdd": {
+      "b_std": 0.0015545901097111375,
+      "t_nw": 0.045250712809104844,
+      "t_boot": 0.04834790264139953,
+      "p_romano_wolf": 0.9648070385922816,
+      "predicted_sign": -1,
+      "supports": false,
+      "rejects_thesis": false
+    },
+    "Y3_volspike": {
+      "b_std": 0.002545437734923762,
+      "t_nw": 0.3454735072891725,
+      "t_boot": 0.3737453601755801,
+      "p_romano_wolf": 0.9166166766646671,
+      "predicted_sign": 1,
+      "supports": false,
+      "rejects_thesis": false
+    },
+    "holds": false
+  },
+  "H3_S2_sfb": {
+    "Y1_return": {
+      "cw_mean": 0.003683087056819931,
+      "cw_t": 1.4462625053163654,
+      "p_one_sided": 0.07405179401965023,
+      "r2_oos_vs_small": 0.0015676737437788635,
+      "n": 396
+    },
+    "Y2_maxdd": {
+      "cw_mean": -3.658623494406329e-05,
+      "cw_t": -0.02762635224400809,
+      "p_one_sided": 0.5110199181838064,
+      "r2_oos_vs_small": -0.00021064645910717772,
+      "n": 396
+    },
+    "Y3_volspike": {
+      "cw_mean": -0.00018274214291080307,
+      "cw_t": -0.8441583945226383,
+      "p_one_sided": 0.8007095498595758,
+      "r2_oos_vs_small": -0.007999107194345711,
+      "n": 396
+    }
+  },
+  "H3_primary_holds": false
+}
