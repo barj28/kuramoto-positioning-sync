@@ -1,8 +1,10 @@
 # Phase-Locking Without Prediction: replication package
 
-Code, pre-registration and results for *Phase-Locking Without Prediction: A
-Pre-Registered Test of Kuramoto Crowding on Real Speculative Positions*
-(A. Kathiravelu, 2026). The manuscript is `kuramoto_cot/note/note.pdf`.
+Code, pre-registrations and results for *Synchronized speculative positioning
+in futures markets: a pre-registered null and exploratory sub-market effects*
+(A. Kathiravelu, 2026). The manuscript is `kuramoto_cot/note/note.pdf`; its
+first version (commit "note 'Phase-Locking Without Prediction'") is kept in the
+history together with the review that led to the current one.
 
 ## What is here
 
@@ -28,15 +30,20 @@ run. These commit dates are self-reported: the first external timestamp is the
 publication of this repository and its archived release, after the analysis.
 The repository was extracted from a private research repository with
 `git subtree split`, which rewrites commit hashes but keeps dates and content;
-`results.json` and the manuscript cite the private hashes, mapped below.
+`PREREG.md` and `results.json` cite the private hashes, mapped below.
 
-| Private hash | Step |
-|---|---|
-| `676c300` | Pre-registration frozen |
-| `96bb2e3` | Phases, order parameter, mapping, PIT rules, tests |
-| `7fb9db6` | Inference and runner, before the first run |
-| `fd61875` | Loader fix and amendment 1, before run 2 |
-| `9558210` | Results of run 2 |
+| Private hash | Public hash | Time (CET) | Step |
+|---|---|---|---|
+| `676c300` | `e629034` | 20:50:52 | Pre-registration frozen |
+| `96bb2e3` | `742fce4` | 20:54:26 | Phases, order parameter, mapping, PIT rules, tests |
+| `7fb9db6` | `5932446` | 20:56:29 | Inference and runner, before the first run |
+| `fd61875` | `e675468` | 20:58:26 | Loader fix and amendment 1, before run 2 |
+| `9558210` | `711a8ca` | 21:01:59 | Results of run 2 |
+| `564cff4` | `af4d032` | 22:16:47 | Post-review results, confirmatory pre-registration (`CONFIRM_PREREG.md`) and its locked runner |
+
+`CONFIRM_PREREG.md` is registered on OSF (link in the manuscript); its tests
+use only held-out outcomes and `confirm.py` refuses to run before the OSF link
+is recorded in `kuramoto_cot/OSF_REGISTRATION.txt`.
 
 ## Reproduce
 
