@@ -33,7 +33,7 @@ _LONG_SHORT = {
     "tff": ("Lev_Money_Positions_Long_All", "Lev_Money_Positions_Short_All"),
     "dis": ("M_Money_Positions_Long_All", "M_Money_Positions_Short_All"),
 }
-_FILES = {"tff": ("fin_fut_txt_*/*.txt",), "dis": ("fut_disagg_txt_*/*.txt",)}
+_FILES = {"tff": ("fin_fut_txt_*/*.txt", "fut_fin_txt_*/*.txt"), "dis": ("fut_disagg_txt_*/*.txt",)}
 
 SHUTDOWNS = (("2013-10-01", "2013-11-30"), ("2018-12-18", "2019-03-08"), ("2025-09-30", "2025-12-31"))
 Z_WIN, Z_MIN = 156, 52

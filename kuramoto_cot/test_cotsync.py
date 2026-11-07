@@ -78,6 +78,16 @@ def test_entry_date_is_monday_after_release():
     assert cs.entry_date(report, days) == pd.Timestamp("2020-03-16")
 
 
+def test_loader_globs_cover_every_cftc_archive_name():
+    # archives: fin_fut_txt_2006_2016 (TFF history), fut_fin_txt_YYYY (TFF yearly),
+    # fut_disagg_txt_hist_2006_2016 and fut_disagg_txt_YYYY (disaggregated)
+    import fnmatch
+    names = {"fin_fut_txt_2006_2016/F_TFF_2006_2016.txt": "tff", "fut_fin_txt_2024/FinFutYY.txt": "tff",
+             "fut_disagg_txt_hist_2006_2016/F_Disagg06_16.txt": "dis", "fut_disagg_txt_2024/f_year.txt": "dis"}
+    for name, kind in names.items():
+        assert any(fnmatch.fnmatch(name, p) for p in cs._FILES[kind]), name
+
+
 def test_shutdown_weeks_flagged():
     assert cs.in_shutdown(pd.Timestamp("2019-01-08"))
     assert cs.in_shutdown(pd.Timestamp("2025-10-14"))

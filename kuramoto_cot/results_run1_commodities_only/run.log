@@ -1,0 +1,358 @@
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:63: RuntimeWarning: Mean of empty slice
+  book = np.nanmean(fwd, axis=1)
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:63: RuntimeWarning: Mean of empty slice
+  book = np.nanmean(fwd, axis=1)
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:63: RuntimeWarning: Mean of empty slice
+  book = np.nanmean(fwd, axis=1)
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:63: RuntimeWarning: Mean of empty slice
+  book = np.nanmean(fwd, axis=1)
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:82: RuntimeWarning: Mean of empty slice
+  "c_ret4w": float(np.nansum(np.nanmean(back, axis=1))), "c_volratio": float(volratio),
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:82: RuntimeWarning: Mean of empty slice
+  "c_ret4w": float(np.nansum(np.nanmean(back, axis=1))), "c_volratio": float(volratio),
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:82: RuntimeWarning: Mean of empty slice
+  "c_ret4w": float(np.nansum(np.nanmean(back, axis=1))), "c_volratio": float(volratio),
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:82: RuntimeWarning: Mean of empty slice
+  "c_ret4w": float(np.nansum(np.nanmean(back, axis=1))), "c_volratio": float(volratio),
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:63: RuntimeWarning: Mean of empty slice
+  book = np.nanmean(fwd, axis=1)
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:63: RuntimeWarning: Mean of empty slice
+  book = np.nanmean(fwd, axis=1)
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:63: RuntimeWarning: Mean of empty slice
+  book = np.nanmean(fwd, axis=1)
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:63: RuntimeWarning: Mean of empty slice
+  book = np.nanmean(fwd, axis=1)
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:82: RuntimeWarning: Mean of empty slice
+  "c_ret4w": float(np.nansum(np.nanmean(back, axis=1))), "c_volratio": float(volratio),
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:82: RuntimeWarning: Mean of empty slice
+  "c_ret4w": float(np.nansum(np.nanmean(back, axis=1))), "c_volratio": float(volratio),
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:82: RuntimeWarning: Mean of empty slice
+  "c_ret4w": float(np.nansum(np.nanmean(back, axis=1))), "c_volratio": float(volratio),
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:82: RuntimeWarning: Mean of empty slice
+  "c_ret4w": float(np.nansum(np.nanmean(back, axis=1))), "c_volratio": float(volratio),
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:63: RuntimeWarning: Mean of empty slice
+  book = np.nanmean(fwd, axis=1)
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:63: RuntimeWarning: Mean of empty slice
+  book = np.nanmean(fwd, axis=1)
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:63: RuntimeWarning: Mean of empty slice
+  book = np.nanmean(fwd, axis=1)
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:63: RuntimeWarning: Mean of empty slice
+  book = np.nanmean(fwd, axis=1)
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:82: RuntimeWarning: Mean of empty slice
+  "c_ret4w": float(np.nansum(np.nanmean(back, axis=1))), "c_volratio": float(volratio),
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:82: RuntimeWarning: Mean of empty slice
+  "c_ret4w": float(np.nansum(np.nanmean(back, axis=1))), "c_volratio": float(volratio),
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:82: RuntimeWarning: Mean of empty slice
+  "c_ret4w": float(np.nansum(np.nanmean(back, axis=1))), "c_volratio": float(volratio),
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:82: RuntimeWarning: Mean of empty slice
+  "c_ret4w": float(np.nansum(np.nanmean(back, axis=1))), "c_volratio": float(volratio),
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:63: RuntimeWarning: Mean of empty slice
+  book = np.nanmean(fwd, axis=1)
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:63: RuntimeWarning: Mean of empty slice
+  book = np.nanmean(fwd, axis=1)
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:63: RuntimeWarning: Mean of empty slice
+  book = np.nanmean(fwd, axis=1)
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:63: RuntimeWarning: Mean of empty slice
+  book = np.nanmean(fwd, axis=1)
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:82: RuntimeWarning: Mean of empty slice
+  "c_ret4w": float(np.nansum(np.nanmean(back, axis=1))), "c_volratio": float(volratio),
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:82: RuntimeWarning: Mean of empty slice
+  "c_ret4w": float(np.nansum(np.nanmean(back, axis=1))), "c_volratio": float(volratio),
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:82: RuntimeWarning: Mean of empty slice
+  "c_ret4w": float(np.nansum(np.nanmean(back, axis=1))), "c_volratio": float(volratio),
+C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\run_prereg.py:82: RuntimeWarning: Mean of empty slice
+  "c_ret4w": float(np.nansum(np.nanmean(back, axis=1))), "c_volratio": float(volratio),
+{
+  "prereg_commit": "676c300",
+  "universe": [
+    "CL",
+    "GC",
+    "GF",
+    "HE",
+    "HG",
+    "HO",
+    "LE",
+    "NG",
+    "PL",
+    "RB",
+    "SI",
+    "ZC",
+    "ZL",
+    "ZM",
+    "ZS",
+    "ZW"
+  ],
+  "n_universe": 16,
+  "excluded": [
+    "AUD.FUT",
+    "CAD.FUT",
+    "CC",
+    "CHF.FUT",
+    "CT",
+    "EMD",
+    "ES",
+    "EUR.FUT",
+    "GBP.FUT",
+    "JPY.FUT",
+    "KC",
+    "KE",
+    "MXN.FUT",
+    "NKD",
+    "NQ",
+    "NZD.FUT",
+    "PA",
+    "RTY",
+    "SB",
+    "TN",
+    "UB",
+    "YM",
+    "ZB",
+    "ZF",
+    "ZN",
+    "ZT"
+  ],
+  "H1_primary": {
+    "r_mean": 0.36821590641631324,
+    "null_mean": 0.22524198916232155,
+    "null_p95": 0.24824760481969632,
+    "null_p99": 0.2616927657381653,
+    "ratio": 1.6347569464544063,
+    "p_one_sided": 0.0004997501249375312,
+    "iid_floor": 0.22155673136318949,
+    "n_markets_mean": 16.0,
+    "holds": true
+  },
+  "H1_S1_nematic": {
+    "r_mean": 0.30562118692190277,
+    "null_mean": 0.2816364149159257,
+    "null_p95": 0.28868079216019105,
+    "null_p99": 0.2918059296098039,
+    "ratio": 1.0851621833530902,
+    "p_one_sided": 0.0004997501249375312,
+    "iid_floor": 0.22155673136318949,
+    "n_markets_mean": 16.0,
+    "holds": null
+  },
+  "H1_S2_sfb": {
+    "r_mean": 0.30632259378770244,
+    "null_mean": 0.22328307118578042,
+    "null_p95": 0.23486801052558606,
+    "null_p99": 0.2395383266548381,
+    "ratio": 1.3719024562002275,
+    "p_one_sided": 0.0004997501249375312,
+    "iid_floor": 0.22155673136318949,
+    "n_markets_mean": 16.0,
+    "holds": null
+  },
+  "H1_S3_tff": {
+    "r_mean": NaN,
+    "null_mean": NaN,
+    "null_p95": NaN,
+    "null_p99": NaN,
+    "ratio": NaN,
+    "p_one_sided": 0.0004997501249375312,
+    "iid_floor": NaN,
+    "n_markets_mean": NaN,
+    "holds": null,
+    "markets": []
+  },
+  "H1_S3_dis": {
+    "r_mean": 0.36821590641631324,
+    "null_mean": 0.2252164424756985,
+    "null_p95": 0.24846558238717073,
+    "null_p99": 0.26063173485865815,
+    "ratio": 1.6349423797334193,
+    "p_one_sided": 0.0004997501249375312,
+    "iid_floor": 0.22155673136318949,
+    "n_markets_mean": 16.0,
+    "holds": null,
+    "markets": [
+      "CL",
+      "GC",
+      "GF",
+      "HE",
+      "HG",
+      "HO",
+      "LE",
+      "NG",
+      "PL",
+      "RB",
+      "SI",
+      "ZC",
+      "ZL",
+      "ZM",
+      "ZS",
+      "ZW"
+    ]
+  },
+  "rows_before_dropna": 770,
+  "H2_primary": {
+    "n": 770,
+    "first_entry": "2010-08-30",
+    "last_entry": "2026-01-26",
+    "Y1_return": {
+      "b_std": 0.3338404847524553,
+      "t_nw": 3.198323835358479,
+      "t_boot": 3.3295329384713157,
+      "p_romano_wolf": 0.004199160167966407,
+      "predicted_sign": -1,
+      "supports": false,
+      "rejects_thesis": true
+    },
+    "Y2_maxdd": {
+      "b_std": 0.021530557129833414,
+      "t_nw": 0.38945561355526603,
+      "t_boot": 0.3945733974552549,
+      "p_romano_wolf": 0.8902219556088782,
+      "predicted_sign": -1,
+      "supports": false,
+      "rejects_thesis": false
+    },
+    "Y3_volspike": {
+      "b_std": -0.0026652725438660596,
+      "t_nw": -0.3422605339691781,
+      "t_boot": 0.31373380414023383,
+      "p_romano_wolf": 0.8902219556088782,
+      "predicted_sign": 1,
+      "supports": false,
+      "rejects_thesis": false
+    },
+    "holds": false
+  },
+  "H3_primary": {
+    "Y1_return": {
+      "cw_mean": 0.20625343385135472,
+      "cw_t": 2.0558135392636787,
+      "p_one_sided": 0.019900246240147967,
+      "r2_oos_vs_small": 0.02615013446879144,
+      "n": 396
+    },
+    "Y2_maxdd": {
+      "cw_mean": -0.0026507541374816072,
+      "cw_t": -0.2959196781727158,
+      "p_one_sided": 0.6163542886338712,
+      "r2_oos_vs_small": -0.003923945722845046,
+      "n": 396
+    },
+    "Y3_volspike": {
+      "cw_mean": -4.122983555874691e-05,
+      "cw_t": -0.8967696736954955,
+      "p_one_sided": 0.815079083286887,
+      "r2_oos_vs_small": -0.001652219411357958,
+      "n": 396
+    }
+  },
+  "H2_S1_nematic": {
+    "n": 770,
+    "first_entry": "2010-08-30",
+    "last_entry": "2026-01-26",
+    "Y1_return": {
+      "b_std": -0.006377950819127402,
+      "t_nw": -0.0667374701440262,
+      "t_boot": 0.0784724167460545,
+      "p_romano_wolf": 0.9392121575684863,
+      "predicted_sign": -1,
+      "supports": false,
+      "rejects_thesis": false
+    },
+    "Y2_maxdd": {
+      "b_std": -0.059476161201865954,
+      "t_nw": -1.0871430912932531,
+      "t_boot": 1.27927452481133,
+      "p_romano_wolf": 0.4221155768846231,
+      "predicted_sign": -1,
+      "supports": false,
+      "rejects_thesis": false
+    },
+    "Y3_volspike": {
+      "b_std": 0.0019624060461949575,
+      "t_nw": 0.3152977236063501,
+      "t_boot": 0.3157373739167197,
+      "p_romano_wolf": 0.9362127574485103,
+      "predicted_sign": 1,
+      "supports": false,
+      "rejects_thesis": false
+    },
+    "holds": false
+  },
+  "H3_S1_nematic": {
+    "Y1_return": {
+      "cw_mean": 0.0006363494192733363,
+      "cw_t": 0.2634651160542419,
+      "p_one_sided": 0.39609605367417233,
+      "r2_oos_vs_small": 0.00014381601453650195,
+      "n": 396
+    },
+    "Y2_maxdd": {
+      "cw_mean": 0.0038107232591574145,
+      "cw_t": 0.3950397362797962,
+      "p_one_sided": 0.3464067813026602,
+      "r2_oos_vs_small": 7.854451440647559e-05,
+      "n": 396
+    },
+    "Y3_volspike": {
+      "cw_mean": -6.269587442801002e-05,
+      "cw_t": -0.76193411926879,
+      "p_one_sided": 0.7769503374391191,
+      "r2_oos_vs_small": -0.0034377563512653087,
+      "n": 396
+    }
+  },
+  "H2_S2_sfb": {
+    "n": 770,
+    "first_entry": "2010-08-30",
+    "last_entry": "2026-01-26",
+    "Y1_return": {
+      "b_std": 0.03438294637093507,
+      "t_nw": 0.3022026123684131,
+      "t_boot": 0.3210633528049864,
+      "p_romano_wolf": 0.8988202359528095,
+      "predicted_sign": -1,
+      "supports": false,
+      "rejects_thesis": false
+    },
+    "Y2_maxdd": {
+      "b_std": -0.020493986307194262,
+      "t_nw": -0.35831400035345656,
+      "t_boot": 0.35998505491464233,
+      "p_romano_wolf": 0.8988202359528095,
+      "predicted_sign": -1,
+      "supports": false,
+      "rejects_thesis": false
+    },
+    "Y3_volspike": {
+      "b_std": 0.005952250371634691,
+      "t_nw": 0.6565761208174279,
+      "t_boot": 0.6637650032067928,
+      "p_romano_wolf": 0.8524295140971806,
+      "predicted_sign": 1,
+      "supports": false,
+      "rejects_thesis": false
+    },
+    "holds": false
+  },
+  "H3_S2_sfb": {
+    "Y1_return": {
+      "cw_mean": 3.7264560498886176e-05,
+      "cw_t": 0.0051314461627662775,
+      "p_one_sided": 0.4979528581502072,
+      "r2_oos_vs_small": -9.805358714354284e-05,
+      "n": 396
+    },
+    "Y2_maxdd": {
+      "cw_mean": 0.002909169281458936,
+      "cw_t": 0.6365037894135935,
+      "p_one_sided": 0.26222405593783127,
+      "r2_oos_vs_small": 0.0016650023763959965,
+      "n": 396
+    },
+    "Y3_volspike": {
+      "cw_mean": -0.00014693510543448184,
+      "cw_t": -0.35992541968070263,
+      "p_one_sided": 0.640548546471317,
+      "r2_oos_vs_small": -0.013582499323126829,
+      "n": 396
+    }
+  },
+  "H3_primary_holds": false
+}

@@ -125,3 +125,15 @@ Phase definition, windows (156, 52, 13, 26 weeks), horizon (4 weeks), outcome
 definitions, controls, sample periods, surrogate count, bootstrap settings,
 correction method, thresholds. The CFTC-to-root mapping and the universe filter
 are mechanical and committed with the code before the first outcome run.
+
+## Amendment 1 (2026-11-07 21:00 CET, after run 1)
+
+Run 1 (commit 7fb9db6, outputs `results_run1_commodities_only/`) loaded only
+the 2006-2016 TFF archive: the loader pattern `fin_fut_txt_*` missed the yearly
+TFF files, named `fut_fin_txt_YYYY`. Every financial market therefore failed the
+85% coverage filter and the universe had 16 commodity markets instead of 32.
+This is a loading bug, not a design choice: the fix adds the missing pattern
+and a test that every CFTC archive name is matched. Nothing else changes.
+Run 2 on the 32-market universe is the pre-registered primary result. Run 1 is
+kept and reported as it came out, as the commodity-only sub-universe (it
+coincides with S3 "dis").
