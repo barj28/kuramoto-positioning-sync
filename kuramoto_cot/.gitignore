@@ -5,3 +5,5 @@ note/*.fdb_latexmk
 note/*.out
 note/build.log
 __pycache__/
+note/*.spl
+note/build_ssrn.log
