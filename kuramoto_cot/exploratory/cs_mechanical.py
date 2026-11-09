@@ -19,7 +19,7 @@ def cs_spread(h, l):
     return s
 
 
-def run(spread_bps, days=2500, steps=390):
+def run(spread_bps, days=2500, steps=390, lagged=False):
     # persistent log-vol AR(1), annualised vol around 20%
     lv = np.empty(days)
     lv[0] = np.log(0.20)
@@ -37,8 +37,9 @@ def run(spread_bps, days=2500, steps=390):
     S = cs_spread(H, L)
     lr = np.r_[np.nan, np.diff(np.log(C))]
     sig = np.full(days, np.nan)
-    for t in range(20, days):
-        sig[t] = np.sqrt(np.nanmean(lr[t - 20:t + 1] ** 2) * 252)
+    for t in range(21 if lagged else 20, days):
+        w = lr[t - 21:t] if lagged else lr[t - 20:t + 1]   # lagged: the 21 days before t
+        sig[t] = np.sqrt(np.nanmean(w ** 2) * 252)
     m = (S > 0) & np.isfinite(sig)
     y, x = np.log(1 / S[m]), np.log(sig[m])
     slope = np.polyfit(x, y, 1)[0]
@@ -54,3 +55,8 @@ for N in (53, 4786):
     th = rng.uniform(0, 2 * np.pi, (5000, N))
     r = np.abs(np.exp(1j * th).mean(axis=1))
     print(f"noise floor N={N}: E[r]={r.mean():.4f}  sqrt(pi/(4N))={np.sqrt(np.pi / (4 * N)):.4f}  1/sqrt(N)={1/np.sqrt(N):.4f}")
+
+# Same estimator with sigma over the 21 days BEFORE t (the earlier paper's equity specification)
+for bps in (0.0, 2.0, 10.0):
+    b, r2, kept = run(bps, lagged=True)
+    print(f"lagged sigma, true spread {bps:4.1f} bps (true beta=0): beta_CS={b:+.2f}  R2={r2:.3f}  share S>0 kept={kept:.2f}")

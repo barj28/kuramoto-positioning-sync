@@ -38,6 +38,11 @@ crowding \sep synchronization \sep Kuramoto model \sep Commitments of Traders
 \end{keyword}
 \end{frontmatter}
 
+\noindent\textit{Note on this version.} This paper replaces the version posted
+on SSRN in March 2026 under the title ``Endogenous Kuramoto Synchronization in
+Algorithmic Trading Flows''. The empirical results of that version are
+withdrawn; \ref{app:withdrawn} lists them with the reason for each.
+
 \section{Introduction}
 
 Crowded positions unwind together \citep{Pedersen2009,Stein2009,KhandaniLo2011}.
@@ -56,7 +61,7 @@ version of this framework built phases from synthetic strategies with an
 event-anchored phase that interpolated to the next flow peak, hence used
 future data, and estimated a liquidity elasticity from a Corwin--Schultz
 spread, which is itself a function of the high--low range
-(Appendix~\ref{app:earlier}). We replace both with a causal phase on CFTC
+(\ref{app:earlier}). We replace both with a causal phase on CFTC
 positions, pre-register the test, and report everything that followed:
 a registered null, a review that exposed why it is null, the exploratory
 sub-market effects behind it, and a registered held-out test of those
@@ -244,7 +249,7 @@ This research received no specific grant from any funding agency.
 
 \section*{Data availability}
 Code, both pre-registrations, every result file and the CFTC download script
-will be released in a public repository with an archived DOI; until then they are available from the author. CFTC data are public.
+are at \url{https://github.com/barj28/kuramoto-positioning-sync}; an archived DOI will follow. CFTC data are public.
 Futures prices are licensed (Databento) and not redistributed; the weekly
 outcome and control rows are included.
 
@@ -276,13 +281,46 @@ spread is a function of the daily high--low range, which scales with
 volatility \citep{AbdiRanaldo2017}. Simulating a market whose true spread is
 constant (true elasticity zero) and regressing $\log(1/S_t)$ on log
 volatility gives elasticities of 0.71 to 0.87, close to the mean of 0.73
-that the earlier framework reported across 43 CME futures.
+that the earlier framework reported across 43 CME futures; with volatility measured over the
+21 days before $t$ the estimates are 0.73 to 0.89.
 
 \paragraph{Inference.} The earlier work reported i.i.d.\ $p$-values for
 correlations between a persistent $r(t)$ and overlapping 21-day forward
 drawdowns. Such $p$-values are known to be far too small
 \citep{HansenHodrick1980,Valkanov2003}; all inference here is
 dependence-robust.
+
+\section{Claims of the March 2026 version that are withdrawn}
+\label{app:withdrawn}
+
+\begin{enumerate}
+\item The liquidity-elasticity spectrum across 1{,}543 instruments (1{,}500 US
+equities and 43 CME futures, from Corwin--Schultz spreads), its sector
+ordering, and the finding that Treasury-bill ETFs are the only sector with a
+negative elasticity. With a constant true spread, so a true elasticity of zero,
+the estimator returns 0.71 to 0.87 with contemporaneous volatility and 0.73 to
+0.89 with the lagged 21-day volatility used for equities
+(\ref{app:earlier}). The spectrum is not identified by this estimator.
+\item The tick-level elasticities of 43 CME futures ($+1.49$ to $-0.56$) and
+the four-regime taxonomy built on them. Replacing contemporaneous realized
+volatility by its one-day lag, to remove bid-ask bounce, leaves a rank
+correlation of 0.24 with the reported estimates, and 24 of the 43 signs change.
+\item The order parameter of 4{,}786 synthetic strategy--instrument positions
+and every result built on it: its correlation with forward drawdowns
+($\rho = +0.196$), the March 2020 episode, the comparison with a
+rolling-correlation benchmark (paired $t = 3.04$) and the per-instrument
+cross-validations. The Signed Flux Bursts phase interpolated to the next flow
+peak and therefore used future data, the strategies were functions of prices
+rather than observed positions, and the drawdown correlations were tested with
+i.i.d.\ $p$-values on overlapping horizons.
+\item The calibration of the mean-field model ($K_0 = 7.47$, $\gamma = -0.147$,
+$\delta = 8.45$): $\gamma < 0$ violates the model's own constraint
+$\gamma > 0$, and $\delta = 8.45$ contradicts the square-root impact exponent
+of 0.5 that the model assumes.
+\item The endogenous coupling $K(r)$ and its consequences (stability regimes,
+the ``liquidity black hole'', hysteresis, capacity bounds) are not tested in
+this paper and are not maintained.
+\end{enumerate}
 
 \begin{thebibliography}{99}
 \bibitem[Abdi and Ranaldo(2017)]{AbdiRanaldo2017}

@@ -56,7 +56,7 @@ version of this framework built phases from synthetic strategies with an
 event-anchored phase that interpolated to the next flow peak, hence used
 future data, and estimated a liquidity elasticity from a Corwin--Schultz
 spread, which is itself a function of the high--low range
-(Appendix~\ref{app:earlier}). We replace both with a causal phase on CFTC
+(\ref{app:earlier}). We replace both with a causal phase on CFTC
 positions, pre-register the test, and report everything that followed:
 a registered null, a review that exposed why it is null, the exploratory
 sub-market effects behind it, and a registered held-out test of those
@@ -276,7 +276,8 @@ spread is a function of the daily high--low range, which scales with
 volatility \citep{AbdiRanaldo2017}. Simulating a market whose true spread is
 constant (true elasticity zero) and regressing $\log(1/S_t)$ on log
 volatility gives elasticities of 0.71 to 0.87, close to the mean of 0.73
-that the earlier framework reported across 43 CME futures.
+that the earlier framework reported across 43 CME futures; with volatility measured over the
+21 days before $t$ the estimates are 0.73 to 0.89.
 
 \paragraph{Inference.} The earlier work reported i.i.d.\ $p$-values for
 correlations between a persistent $r(t)$ and overlapping 21-day forward
