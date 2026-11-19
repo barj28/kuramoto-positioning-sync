@@ -1,0 +1,21 @@
+{
+  "osf": "https://osf.io/xg745/",
+  "prices": "C:/Users/Arjun/Desktop/barj_backtester/data/futures",
+  "which": "ch2a",
+  "CH2a": {
+    "n": 172,
+    "first_entry": "2022-07-11",
+    "last_entry": "2026-01-26",
+    "b_sd": 0.09038633571228032,
+    "ci95_sd": [
+      -0.14173343516463466,
+      0.32250610658919526
+    ],
+    "t_nw": 0.763214685792576,
+    "p_one_sided": 0.22266768592878594,
+    "alpha": 0.016666666666666666,
+    "confirmed": false,
+    "p_bootstrap_one_sided": 0.242751449710058,
+    "predicted_sign": 1
+  }
+}
