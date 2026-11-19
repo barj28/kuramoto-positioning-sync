@@ -1,6 +1,6 @@
-"""Make note_ssrn.tex from note.tex for the SSRN revision of 6378278: replace the link
-placeholders with accurate text, and add a note on this version plus an appendix listing the
-claims of the March 2026 version that are withdrawn (SSRN version only).
+"""Make note_ssrn.tex from note.tex for the SSRN revision of 6378278: add a note on this version
+and an appendix listing the claims of the March 2026 version that are withdrawn (SSRN version
+only).
 
 python make_ssrn.py <note dir>
 """
@@ -52,19 +52,7 @@ this paper and are not maintained.
 
 \begin{thebibliography}"""
 
-ZENODO_DOI = "ZENODO_DOI"
-
 pairs = [
-    ("\\title{Synchronized speculative positioning in futures markets:\\\\\n"
-     "a pre-registered null and exploratory sub-market effects}",
-     "\\title{Does Kuramoto synchronization predict crowding unwinds?\\\\\n"
-     "A pre-registered test on futures positioning}"),
-    (r"(\texttt{CONFIRM\_PREREG.md}, OSF: \url{OSF_LINK})",
-     r"(\texttt{CONFIRM\_PREREG.md}, deposited on OSF on 19 November 2026, before any held-out"
-     r" outcome was computed: \url{https://doi.org/10.17605/OSF.IO/XG745})"),
-    (r"are at \url{REPO_LINK} (archived as \url{DOI_LINK}).",
-     r"are at \url{https://github.com/barj28/kuramoto-positioning-sync} (archived as"
-     r" \url{https://doi.org/" + ZENODO_DOI + "})."),
     ("\\end{frontmatter}\n", NOTE),
     ("\\begin{thebibliography}", WITHDRAWN),
 ]

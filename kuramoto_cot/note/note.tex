@@ -5,13 +5,14 @@
 \graphicspath{{figures/}}
 \usepackage{booktabs}
 \usepackage[colorlinks,citecolor=black,linkcolor=black,urlcolor=blue]{hyperref}
+\def\UrlBreaks{\do\/\do-}
 \journal{Finance Research Letters}
 
 \begin{document}
 \begin{frontmatter}
 
-\title{Synchronized speculative positioning in futures markets:\\
-a pre-registered null and exploratory sub-market effects}
+\title{Does Kuramoto synchronization predict crowding unwinds?\\
+A pre-registered test on futures positioning}
 
 \author{Arjun Kathiravelu}
 \ead{arjun.kathiravelu@etu.unige.ch}
@@ -20,15 +21,16 @@ a pre-registered null and exploratory sub-market effects}
 \begin{abstract}
 Coupled-oscillator (Kuramoto) measures are proposed as crowding indicators:
 when traders' position cycles align, synchronized exits should follow. We
-test this on CFTC leveraged-fund and managed-money positions in 32 futures
-markets with a causal phase and a pre-registered design. Pooled, the order
+pre-register a test on CFTC leveraged-fund and managed-money positions in 32
+futures markets, with a causal phase. Pooled, the order
 parameter predicts neither returns, drawdowns nor volatility of the
-speculative book, in or out of sample, and its excess over independence is
-89\% ordinary comovement of positions. Exploratory splits tell a different
-story: in currencies, synchronization precedes deeper drawdowns of the
-leveraged-fund book beyond aggregate positioning ($-0.24$ s.d., out-of-sample
-$R^2$ of 6.8\%), while in commodities it precedes continuation. We register
-held-out tests of both.
+speculative book, and its excess over independence is 89\% ordinary
+comovement. In exploratory splits, currency synchronization
+precedes deeper leveraged-fund drawdowns beyond aggregate positioning
+($-0.24$ s.d.) and commodity synchronization precedes continuation. A
+registered test on six held-out commodity markets does not confirm
+continuation ($+0.09$ s.d., $p=0.22$); the currency test is registered for
+2029.
 \end{abstract}
 
 \begin{keyword}
@@ -59,8 +61,8 @@ spread, which is itself a function of the high--low range
 (\ref{app:earlier}). We replace both with a causal phase on CFTC
 positions, pre-register the test, and report everything that followed:
 a registered null, a review that exposed why it is null, the exploratory
-sub-market effects behind it, and a registered held-out test of those
-effects.
+sub-market effects behind it, and registered held-out tests of those
+effects, the first of which does not confirm the commodity effect.
 
 \section{Data and registered design}
 \label{sec:design}
@@ -143,7 +145,7 @@ Y3 vol.\ ratio & $-0.01$ & $[-0.11,\ 0.09]$ & 0.78 & 0.82 & $-0.006$ & 0.14 \\
 The analyses in this section were run after the registered results and an
 adversarial review; they are hypothesis-generating.
 
-\paragraph{H1 is mostly comovement.} The circular-shift null removes all
+\paragraph{H1 is mostly comovement} The circular-shift null removes all
 dependence between markets, so any common factor rejects it. A multivariate
 Fourier surrogate of weekly position changes keeps every cross-correlation
 and spectrum and randomizes the rest \citep{PrichardTheiler1994}. Against it,
@@ -161,7 +163,7 @@ panels, so the observed values differ slightly from the registered one).
 Share: part of the excess over the circular-shift mean that the
 Fourier null reproduces.}
 \label{tab:ft}
-\small
+\small\setlength{\tabcolsep}{4pt}
 \begin{tabular}{lrrrrr}
 \toprule
 Markets & observed & circular mean & Fourier mean & $p_{\text{Fourier}}$ & share \\
@@ -175,7 +177,7 @@ Financials (16) & 0.306 & 0.233 & 0.298 & 0.194 & 0.89 \\
 \end{tabular}
 \end{table}
 
-\paragraph{The pooled null averages opposite effects.} Table~\ref{tab:sub}
+\paragraph{The pooled null averages opposite effects} Table~\ref{tab:sub}
 splits the registered H2 and H3. In currencies, higher $r$ precedes deeper
 drawdowns of the leveraged-fund book ($-0.26$ s.d., $t=-4.85$), out of sample
 as well ($R^2_{oos}=6.8\%$). In commodities, it precedes higher returns of
@@ -200,7 +202,7 @@ the currency effect does.
 Last column: coefficient on $r$ with aggregate positioning
 ($|N^{-1}\sum z_i|$, $N^{-1}\sum z_i$) added, $t$ in brackets.}
 \label{tab:sub}
-\small
+\footnotesize\setlength{\tabcolsep}{3.5pt}
 \begin{tabular}{llrrrrr}
 \toprule
 Markets & Outcome & $b$ & $t_{NW}$ & $p_{CW}$ & $R^2_{oos}$ & $b$ with positioning \\
@@ -214,8 +216,10 @@ Commodities (16) & Y1 return & $0.18$ & $3.20$ & 0.020 & 0.026 & $0.13$ [$2.14$]
 
 \section{Registered held-out tests}
 
-All the effects above come from data already examined. We therefore register
-(\texttt{CONFIRM\_PREREG.md}, OSF: \url{OSF_LINK}) three one-sided tests on
+All the effects above come from data already examined. We therefore
+registered (\texttt{CONFIRM\_PREREG.md}, OSF, 19 November 2026, before any
+held-out outcome was computed: \url{https://doi.org/10.17605/OSF.IO/XG745})
+three one-sided tests on
 outcomes no analysis has looked at, each at $\alpha = 0.05/3$, with the
 registered controls plus aggregate positioning: CH1, currency $r$ predicts
 deeper drawdowns of the currency book on entries from March 2026 to December
@@ -227,6 +231,16 @@ to run before the registration is recorded and the time hold-out before
 February 2029. Power is limited and stated in advance: 44\% for CH1 at the
 in-sample effect and 13\% at half of it, 17--30\% for CH2a.
 
+\paragraph{CH2a is not confirmed} The registration became public on
+19 November 2026 and CH2a was run once, the same day. On 172 weeks (entries
+from July 2022 to January 2026; the registration expected about 190), the
+coefficient has the predicted sign but is far from the threshold: $+0.09$
+s.d.\ (95\% interval $-0.14$ to $+0.32$), Newey--West $t=0.76$, one-sided
+$p=0.22$ against $\alpha=0.0167$ (bootstrap $p=0.24$). The interval contains
+zero and the in-sample estimate of $+0.13$ s.d. With the power stated above,
+this result neither confirms commodity continuation nor rules it out; the
+effect remains unconfirmed. CH1 and CH2b wait for 2029.
+
 \section{Conclusion}
 
 Speculative positions across futures markets move together, but most of that
@@ -234,7 +248,10 @@ alignment is ordinary comovement, and pooled synchronization is not a crowding
 warning. The pooled null hides two opposite effects: synchronized
 leveraged-fund currency positioning precedes crash risk beyond the level of
 positioning, and synchronized commodity positioning precedes continuation.
-Both are exploratory and both are now registered for held-out tests.
+Both are exploratory. The first registered held-out test, on six new
+commodity markets, does not confirm continuation ($+0.09$ s.d., $p=0.22$, at
+low power). The currency effect, the stronger of the two, is registered for a
+test on 2026--2028 data.
 
 \section*{Declaration of competing interest}
 The author declares no competing interests.
@@ -243,23 +260,26 @@ The author declares no competing interests.
 This research received no specific grant from any funding agency.
 
 \section*{Data availability}
+\begin{sloppypar}
 Code, both pre-registrations, every result file and the CFTC download script
-are at \url{REPO_LINK} (archived as \url{DOI_LINK}). CFTC data are public.
+are at \url{https://github.com/barj28/kuramoto-positioning-sync}
+(archived as \url{https://doi.org/10.5281/zenodo.24370733}). CFTC data are public.
 Futures prices are licensed (Databento) and not redistributed; the weekly
 outcome and control rows are included.
+\end{sloppypar}
 
 \appendix
 \section{Two flaws of the earlier framework}
 \label{app:earlier}
 
-\paragraph{Event-anchored phases.} Assigning phase 0 to a buying burst, $\pi$
+\paragraph{Event-anchored phases} Assigning phase 0 to a buying burst, $\pi$
 to the next selling burst and interpolating in between needs the date of the
 next burst; peak detection that compares $q_t$ with $q_{t+1}$ adds a one-step
 leak. Altering a position series after date $\tau$ changes the interpolated
 phases before $\tau$; the causal phase of Section~\ref{sec:design} does not
 move.
 
-\paragraph{A spread elasticity built from volatility.} The Corwin--Schultz
+\paragraph{A spread elasticity built from volatility} The Corwin--Schultz
 spread is a function of the daily high--low range, which scales with
 volatility \citep{AbdiRanaldo2017}. Simulating a market whose true spread is
 constant (true elasticity zero) and regressing $\log(1/S_t)$ on log
@@ -267,7 +287,7 @@ volatility gives elasticities of 0.71 to 0.87, close to the mean of 0.73
 that the earlier framework reported across 43 CME futures; with volatility measured over the
 21 days before $t$ the estimates are 0.73 to 0.89.
 
-\paragraph{Inference.} The earlier work reported i.i.d.\ $p$-values for
+\paragraph{Inference} The earlier work reported i.i.d.\ $p$-values for
 correlations between a persistent $r(t)$ and overlapping 21-day forward
 drawdowns. Such $p$-values are known to be far too small
 \citep{HansenHodrick1980,Valkanov2003}; all inference here is

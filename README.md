@@ -1,10 +1,11 @@
-# Phase-Locking Without Prediction: replication package
+# Does Kuramoto synchronization predict crowding unwinds? Replication package
 
-Code, pre-registrations and results for *Synchronized speculative positioning
-in futures markets: a pre-registered null and exploratory sub-market effects*
+Code, pre-registrations and results for *Does Kuramoto synchronization predict
+crowding unwinds? A pre-registered test on futures positioning*
 (A. Kathiravelu, 2026). The manuscript is `kuramoto_cot/note/note.pdf`; its
 first version (commit "note 'Phase-Locking Without Prediction'") is kept in the
-history together with the review that led to the current one.
+history together with the review that led to the current one. Archived at
+https://doi.org/10.5281/zenodo.24370733.
 
 ## What is here
 
@@ -19,6 +20,8 @@ history together with the review that led to the current one.
 | `kuramoto_cot/results/` | Registered run (32 markets): `results.json`, weekly rows, order-parameter series |
 | `kuramoto_cot/results_run1_commodities_only/` | First run, affected by a loading bug (see PREREG amendment 1), reported as it came out |
 | `kuramoto_cot/results_exploratory/` | Outputs of the exploratory scripts |
+| `kuramoto_cot/CONFIRM_PREREG.md`, `confirm.py` | Confirmatory pre-registration (OSF) and its locked runner |
+| `kuramoto_cot/results_confirm/` | Registered held-out tests, each run once: `ch2a.json` |
 | `kuramoto_cot/test_*.py` | Tests (causality of both phases, phase convention, surrogates, PIT entry dates, inference) |
 
 ## Timeline and what the timestamps prove
@@ -40,11 +43,23 @@ The repository was extracted from a private research repository with
 | `fd61875` | `e675468` | 20:58:26 | Loader fix and amendment 1, before run 2 |
 | `9558210` | `711a8ca` | 21:01:59 | Results of run 2 |
 | `564cff4` | `af4d032` | 22:16:47 | Post-review results, confirmatory pre-registration (`CONFIRM_PREREG.md`) and its locked runner |
+| `81b6bbf` | `f467682` | 19 Nov., 14:44:16 | OSF registration recorded |
+| `c1650bc` | `952c9d8` | 19 Nov., 14:46:01 | Result of CH2a |
 
 `CONFIRM_PREREG.md` is registered on OSF (https://osf.io/xg745/, 19 November 2026,
 doi:10.17605/OSF.IO/XG745); its tests
 use only held-out outcomes and `confirm.py` refuses to run before the OSF link
-is recorded in `kuramoto_cot/OSF_REGISTRATION.txt`.
+is recorded in `kuramoto_cot/OSF_REGISTRATION.txt`. Unlike the commit dates,
+the OSF timestamp is external: the registration became public at 13:38 UTC and
+CH2a ran once at 13:45 UTC, with the runner unchanged since `af4d032`.
+
+## Confirmatory results
+
+| Test | Status | Result |
+|---|---|---|
+| CH2a, commodity continuation on six held-out markets | Run on 19 November 2026 | Not confirmed: b = +0.09 s.d. (95% interval -0.14 to +0.32), Newey-West t = 0.76, one-sided p = 0.22 against alpha = 0.0167, 172 weeks |
+| CH1, currency drawdowns on 2026-2028 entries | Locked until 1 February 2029 | |
+| CH2b, commodity continuation on 2026-2028 entries | Locked until 1 February 2029 | |
 
 ## Reproduce
 
@@ -54,6 +69,7 @@ Python 3.11+ with the packages in `requirements.txt`. From the repository root:
 python -m pytest -q kuramoto_cot
 python -m kuramoto_cot.fetch_cftc --out cftc
 python -m kuramoto_cot.run_prereg --cftc cftc --prices <price dir> --out out
+python -m kuramoto_cot.confirm ch2a --cftc cftc --prices <price dir> --out out/ch2a.json
 python -m kuramoto_cot.exploratory.lookahead_sim --reps 200 --out out/lookahead_sim.json
 python kuramoto_cot/exploratory/cs_mechanical.py
 ```
