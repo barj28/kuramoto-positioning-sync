@@ -1,13 +1,13 @@
 # SSRN revision of 6378278: fields to paste (2026-11-09)
 
 PDF to upload: `C:\Users\Arjun\Desktop\barj_backtester-wt-kuramoto-cot\research\kuramoto_cot\note\note_ssrn.pdf`
-(10 pages). It carries a "Note on this version" on page 1 and Appendix B, which
+(9 pages). It carries a "Note on this version" on page 1 and Appendix B, which
 lists every withdrawn claim of the March 2026 version. The version it replaces
 is `C:\Users\Arjun\Desktop\barj_backtester\paper\versions\ssrn\main.pdf`
 (31 pages, 9 March 2026), left untouched.
 
 ## Title
-Synchronized Speculative Positioning in Futures Markets: A Pre-Registered Null and Exploratory Sub-Market Effects
+Does Kuramoto Synchronization Predict Crowding Unwinds? A Pre-Registered Test on Futures Positioning
 
 ## Affiliation
 Université de Genève
