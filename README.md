@@ -41,7 +41,8 @@ The repository was extracted from a private research repository with
 | `9558210` | `711a8ca` | 21:01:59 | Results of run 2 |
 | `564cff4` | `af4d032` | 22:16:47 | Post-review results, confirmatory pre-registration (`CONFIRM_PREREG.md`) and its locked runner |
 
-`CONFIRM_PREREG.md` is registered on OSF (link in the manuscript); its tests
+`CONFIRM_PREREG.md` is registered on OSF (https://osf.io/xg745/, 19 November 2026,
+doi:10.17605/OSF.IO/XG745); its tests
 use only held-out outcomes and `confirm.py` refuses to run before the OSF link
 is recorded in `kuramoto_cot/OSF_REGISTRATION.txt`.
 
