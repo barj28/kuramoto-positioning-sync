@@ -17,5 +17,8 @@ keywords:
   - pre-registration
 identifiers:
   - type: doi
+    value: 10.5281/zenodo.24370733
+    description: "Archive of this package, all versions"
+  - type: doi
     value: 10.17605/OSF.IO/XG745
     description: "OSF registration of the confirmatory tests (CONFIRM_PREREG.md)"

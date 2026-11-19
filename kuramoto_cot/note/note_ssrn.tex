@@ -22,15 +22,14 @@ A pre-registered test on futures positioning}
 Coupled-oscillator (Kuramoto) measures are proposed as crowding indicators:
 when traders' position cycles align, synchronized exits should follow. We
 pre-register a test on CFTC leveraged-fund and managed-money positions in 32
-futures markets, with a causal phase. Pooled, the order
+futures markets, with a causal phase. Pooled, the registered order
 parameter predicts neither returns, drawdowns nor volatility of the
-speculative book, and its excess over independence is 89\% ordinary
-comovement. In exploratory splits, currency synchronization
-precedes deeper leveraged-fund drawdowns beyond aggregate positioning
-($-0.24$ s.d.) and commodity synchronization precedes continuation. A
-registered test on six held-out commodity markets does not confirm
-continuation ($+0.09$ s.d., $p=0.22$); the currency test is registered for
-2029.
+speculative book. In exploratory analyses, 89\% of its excess over
+independence is comovement, currency synchronization precedes deeper
+leveraged-fund drawdowns beyond aggregate positioning ($-0.24$ s.d.), and
+commodity synchronization precedes continuation. A registered, low-powered
+test on six held-out commodity markets does not confirm continuation
+($+0.09$ s.d., $p=0.22$); the currency test is registered for 2029.
 \end{abstract}
 
 \begin{keyword}
@@ -84,7 +83,8 @@ its as-of date (it is released on Friday), and report weeks around the 2013,
 futures; returns are daily price changes scaled by trailing volatility. The
 universe is every market with at least 85\% coverage of both the CFTC series
 (2009--2026) and our price files (2010--2026): 32 markets. The price
-requirement removes the softs, palladium and KC wheat.
+requirement removes the softs, palladium and KC wheat; four financial
+contracts fail one of the two.
 
 The phase is causal: with $z_i(t)$ the 156-week trailing z-score of $x_i$ and
 $d_i(t)$ the weekly change of $x_i$ divided by the trailing standard deviation
@@ -105,7 +105,9 @@ training to 2017 and testing on 2018--2026. A full crowding paper required all
 three. The registration (\texttt{PREREG.md}) and code were committed before
 each run; these timestamps are self-reported, not an external registration.
 A first run, affected by a loading bug, used only the 16 commodity markets; it
-is kept and reported in the package.
+is kept and reported in the package. That run already showed the commodity
+result of Table~\ref{tab:sub} ($p_{RW}=0.004$, opposite to the predicted
+sign, which the registration counts as a rejection of the thesis).
 
 \section{Registered results}
 
@@ -121,10 +123,15 @@ circular-shift surrogates. Under the null about 5\% of weeks exceed the band.}
 H1 holds as registered: mean $r$ is 0.287 against a surrogate mean of 0.156
 ($p=0.0005$, the smallest attainable with 2{,}000 surrogates), equal to the
 independence floor $\sqrt{\pi/4N}=0.157$ (Figure~\ref{fig:r}). H2 and H3 fail
-(Table~\ref{tab:h2}): no outcome has an adjusted $p$ below 0.33, and
+(Table~\ref{tab:h2}): the smallest adjusted $p$ is 0.33, and
 out-of-sample $R^2$ stays under 1\%. The test could detect effects of about
 0.15 s.d.\ of the outcome; for drawdowns the 95\% interval reaches
 $-0.20$ s.d., so small crowding effects are not excluded.
+Of the two registered secondary order parameters (reported, not used for the
+decision), the nematic one, $|N^{-1}\sum_i e^{2i\theta_i}|$, predicts deeper
+pooled drawdowns ($t_{NW}=-2.22$, $p_{RW}=0.017$) but adds nothing out of
+sample (Clark--West $p=0.13$); the causal event-anchored phase predicts
+nothing ($p_{RW}\geq 0.39$).
 
 \begin{table}[t]
 \centering
@@ -190,14 +197,15 @@ the managed-money book ($+0.18$ s.d.), consistent with trend continuation
 \citep{MoskowitzOoiPedersen2012}. Rates and equity indices show a drawdown
 effect too, but there leveraged funds are net short in most weeks in the
 longer Treasury contracts and the S\&P~500 contract (UB 100\%, ES 98\%, ZB
-84\%, ZF 71\%), positions that partly reflect basis trades and hedges of cash
+84\%, ZF 70\% of report weeks, 2010--2026), positions that partly reflect basis trades and hedges of cash
 holdings rather than directional bets \citep{BarthKahn2021}; the effect there
-disappears once aggregate positioning is controlled.
+is halved and no longer significant once aggregate positioning is controlled
+($-0.13$ s.d., $t=-1.48$).
 With $|N^{-1}\sum_i z_i|$ and $N^{-1}\sum_i z_i$ added, the channel of
 \citet{BrunnermeierNagelPedersen2008}, the currency effect stays
 ($-0.24$ s.d., $t=-3.47$, $p_{RW}=0.001$) and so does commodity continuation
 ($+0.13$ s.d., $t=2.14$, $p_{RW}=0.034$). Five sub-universes and three
-outcomes make 15 tests. With the registered controls both effects survive a
+outcomes make at least 15 tests. With the registered controls both effects survive a
 Bonferroni correction across them; with aggregate positioning added, only
 the currency effect does.
 
@@ -230,29 +238,33 @@ registered controls plus aggregate positioning: CH1, currency $r$ predicts
 deeper drawdowns of the currency book on entries from March 2026 to December
 2028 (no price after 24 February 2026 has been loaded); CH2a, commodity $r$
 predicts higher returns of a managed-money book on six commodity markets never
-used in any outcome analysis (cocoa, cotton, coffee, sugar, KC wheat,
-palladium); CH2b, the commodity effect on the time hold-out. The code refuses
+used in any outcome analysis of CFTC positioning (cocoa, cotton, coffee,
+sugar, KC wheat, palladium), a cross-sectional hold-out over weeks inside the
+original sample, not a new period; CH2b, the commodity effect on the time hold-out. The code refuses
 to run before the registration is recorded and the time hold-out before
-February 2029. Power is limited and stated in advance: 44\% for CH1 at the
-in-sample effect and 13\% at half of it, 17--30\% for CH2a.
+February 2029. Power is limited and was stated in advance: 44\% for CH1 at
+the in-sample effect, 17--30\% for CH2a. Those figures used the standard
+errors of the specification without the two positioning controls; with them,
+the same calculation gives about 26\% for CH1 and 14--25\% for CH2a.
 
 \paragraph{CH2a is not confirmed} The registration became public on
 19 November 2026 and CH2a was run once, the same day. On 172 weeks (entries
-from July 2022 to January 2026; the registration expected about 190), the
+from July 2022 to January 2026; the registration expected about 190 and did
+not subtract the 14 excluded report weeks of the 2025 shutdown), the
 coefficient has the predicted sign but is far from the threshold: $+0.09$
 s.d.\ (95\% interval $-0.14$ to $+0.32$), Newey--West $t=0.76$, one-sided
 $p=0.22$ against $\alpha=0.0167$ (bootstrap $p=0.24$). The interval contains
-zero and the in-sample estimate of $+0.13$ s.d. With the power stated above,
+zero and the in-sample estimate of $+0.13$ s.d. The test as run could detect 0.35 s.d.\ with 80\% power, so
 this result neither confirms commodity continuation nor rules it out; the
 effect remains unconfirmed. CH1 and CH2b wait for 2029.
 
 \section{Conclusion}
 
 Speculative positions across futures markets move together, but most of that
-alignment is ordinary comovement, and pooled synchronization is not a crowding
-warning. The pooled null hides two opposite effects: synchronized
-leveraged-fund currency positioning precedes crash risk beyond the level of
-positioning, and synchronized commodity positioning precedes continuation.
+alignment is ordinary comovement, and we find no evidence that pooled
+synchronization is a crowding warning. The pooled null hides two opposite effects: synchronized
+leveraged-fund currency positioning precedes deeper drawdowns of that book
+beyond the level of positioning, and synchronized commodity positioning precedes continuation.
 Both are exploratory. The first registered held-out test, on six new
 commodity markets, does not confirm continuation ($+0.09$ s.d., $p=0.22$, at
 low power). The currency effect, the stronger of the two, is registered for a
@@ -270,7 +282,8 @@ Code, both pre-registrations, every result file and the CFTC download script
 are at \url{https://github.com/barj28/kuramoto-positioning-sync}
 (archived as \url{https://doi.org/10.5281/zenodo.24370733}). CFTC data are public.
 Futures prices are licensed (Databento) and not redistributed; the weekly
-outcome and control rows are included.
+outcome and control rows of the registered runs are included, those of CH2a
+are not.
 \end{sloppypar}
 
 \appendix

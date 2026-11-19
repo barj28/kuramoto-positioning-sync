@@ -13,7 +13,7 @@ Does Kuramoto Synchronization Predict Crowding Unwinds? A Pre-Registered Test on
 Université de Genève
 
 ## Abstract (plain text)
-Coupled-oscillator (Kuramoto) measures are proposed as crowding indicators: when traders' position cycles align, synchronized exits should follow. We pre-register a test on CFTC leveraged-fund and managed-money positions in 32 futures markets, with a causal phase. Pooled, the order parameter predicts neither returns, drawdowns nor volatility of the speculative book, and its excess over independence is 89% ordinary comovement. In exploratory splits, currency synchronization precedes deeper leveraged-fund drawdowns beyond aggregate positioning (-0.24 s.d.) and commodity synchronization precedes continuation. A registered test on six held-out commodity markets does not confirm continuation (+0.09 s.d., p = 0.22); the currency test is registered for 2029.
+Coupled-oscillator (Kuramoto) measures are proposed as crowding indicators: when traders' position cycles align, synchronized exits should follow. We pre-register a test on CFTC leveraged-fund and managed-money positions in 32 futures markets, with a causal phase. Pooled, the registered order parameter predicts neither returns, drawdowns nor volatility of the speculative book. In exploratory analyses, 89% of its excess over independence is comovement, currency synchronization precedes deeper leveraged-fund drawdowns beyond aggregate positioning (-0.24 s.d.), and commodity synchronization precedes continuation. A registered, low-powered test on six held-out commodity markets does not confirm continuation (+0.09 s.d., p = 0.22); the currency test is registered for 2029.
 
 ## Keywords
 crowding; synchronization; Kuramoto model; Commitments of Traders; currency crash risk; pre-registration
@@ -26,3 +26,5 @@ Replaces the March 2026 version ("Endogenous Kuramoto Synchronization in Algorit
 
 ## Code
 https://github.com/barj28/kuramoto-positioning-sync
+Archive: https://doi.org/10.5281/zenodo.24370733
+OSF registration of the held-out tests: https://doi.org/10.17605/OSF.IO/XG745

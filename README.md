@@ -20,6 +20,8 @@ https://doi.org/10.5281/zenodo.24370733.
 | `kuramoto_cot/results/` | Registered run (32 markets): `results.json`, weekly rows, order-parameter series |
 | `kuramoto_cot/results_run1_commodities_only/` | First run, affected by a loading bug (see PREREG amendment 1), reported as it came out |
 | `kuramoto_cot/results_exploratory/` | Outputs of the exploratory scripts |
+| `kuramoto_cot/exploratory/revision.py`, `revision_controls.py`, `net_short.py` | Not registered, after review: Fourier-surrogate null, sub-market splits, aggregate-positioning controls, net-short shares (Tables 2 and 3) |
+| `kuramoto_cot/results_revision/` | Their outputs: `revision.json`, `revision_controls.json`, `net_short.json` |
 | `kuramoto_cot/CONFIRM_PREREG.md`, `confirm.py` | Confirmatory pre-registration (OSF) and its locked runner |
 | `kuramoto_cot/results_confirm/` | Registered held-out tests, each run once: `ch2a.json` |
 | `kuramoto_cot/test_*.py` | Tests (causality of both phases, phase convention, surrogates, PIT entry dates, inference) |

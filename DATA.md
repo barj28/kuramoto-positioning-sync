@@ -22,3 +22,7 @@ ratio-adjusted series will differ slightly.
 The registered weekly outcome and control rows (`results/weekly_rows.parquet`,
 volatility-scaled book returns, drawdowns and volatility ratios, no prices) are
 included, so the regressions can be re-estimated without the price files.
+
+The confirmatory test CH2a also needs the six held-out commodity markets (`CC`,
+`CT`, `KC`, `SB`, `KE`, `PA`; histories start between 2013 and 2022, see
+`CONFIRM_PREREG.md`). Its weekly rows are not included.
